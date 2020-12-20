@@ -8,5 +8,4 @@ Result: Integer;
 begin
   i2c.write;
   Result := i2c.read("0xF6");
-  Put_Line (Integer'Image(Result));
 end Read;
