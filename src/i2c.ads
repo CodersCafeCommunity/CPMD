@@ -7,5 +7,5 @@ with Ada.Text_IO.Unbounded_IO;
 
 package I2C is
 	procedure write;
-	function read(D: Unbounded_String) return Integer ;
+	function read(D: String) return Integer ;
 end I2C; 
