@@ -34,7 +34,7 @@ package body i2c is
 	R2: Unbounded_String:= "i2cget -y -a 1 0x77";
     begin
     R3 := R2 & To_Unbounded_String(D) & "b";
-    V1 := System (ToString(R3));
+    V1 := System (To_String(R3));
     return (Integer'Value(V1));
     end read;
 
