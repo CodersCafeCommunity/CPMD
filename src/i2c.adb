@@ -11,7 +11,6 @@ package body i2c is
     R3: Unbounded_String;
     W1: String:="i2cset -y -a 1 0x77 0xF4 0x2E";
 
-   
     procedure write is
         function System (Cmd : String) return Integer is
             function C_System (S : Interfaces.C.char_array) return Integer;
