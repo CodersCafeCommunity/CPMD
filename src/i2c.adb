@@ -32,7 +32,7 @@ package body i2c is
             return C_System (Interfaces.C.To_C (Cmd));        
         end System;
         pragma Inline (System);
-	R2: Unbounded_String:="i2cget -y -a 1 0x77";
+	R2: Unbounded_String:= "i2cget -y -a 1 0x77";
     begin
     R3 := R2 & D & "b";
     V1 := System (ToString(R3));
