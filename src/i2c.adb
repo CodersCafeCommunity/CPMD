@@ -8,7 +8,7 @@ with Ada.Text_IO.Unbounded_IO;
 
 package body i2c is
     R1,R2,V1: Integer;
-    R3: Unbounde_String;
+    R3: Unbounded_String;
     W1: String:="i2cset -y -a 1 0x77 0xF4 0x2E";
 
    
