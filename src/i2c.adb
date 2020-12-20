@@ -8,7 +8,7 @@ with Ada.Text_IO.Unbounded_IO;
 
 package body i2c is
     R1,R2,V1: Integer;
-    W1: String:="i2cset -y 1 77 0xF4 0x2E c";
+    W1: String:="i2cset -y 1 77 0xF4 0x2E";
 
    
     procedure write is
@@ -34,7 +34,8 @@ package body i2c is
             return C_System (Interfaces.C.To_C (Cmd));        
         end System;
         pragma Inline (System);
-	R2: String:="i2cget -y 1 77" & D & "c";
+	R2: String:="i2cget -y 1 77 0xF6";
+    D:String:= D
     begin
     V1 := System (R2);
     return V1;
