@@ -23,7 +23,7 @@ package body i2c is
     R1 := System (W1);
     end write;
     
-    function read(D: Unbounded_String)  return Integer is
+    function read(D: String)  return Integer is
           function System (Cmd : String) return Integer is
             function C_System (S : Interfaces.C.char_array) return Integer;
         pragma Import (C, C_System, "system");
@@ -33,7 +33,7 @@ package body i2c is
         pragma Inline (System);
 	R2: Unbounded_String:= "i2cget -y -a 1 0x77";
     begin
-    R3 := R2 & D & "b";
+    R3 := R2 & To_Unbounded_String(D) & "b";
     V1 := System (ToString(R3));
     return (Integer'Value(V1));
     end read;
