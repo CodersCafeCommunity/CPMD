@@ -7,16 +7,11 @@ with Ada.Strings.Unbounded;
 with Ada.Text_IO.Unbounded_IO;
 
 package body i2c is
-    R,V1: Integer;
-    W1: String:="i2cset -y -a 1 0x5d 0x12 0x01";
-    W2: String:="i2cset -y -a 1 0x5d 0x13 0x01";
-    W3: String:="i2cset -y -a 1 0x5d 0x14 0x9";
-    
-    R1: String:="i2cget -y -a 1 0x5d 0x19";
-    R2: String:="i2cget -y -a 1 0x5d 0x1A";
-    R3: String:="i2cget -y -a 1 0x5d 0x1B";
-    R4: String:="i2cget -y -a 1 0x5d 0x1C";
-
+    R1,R2,V1: Integer;
+    W1: String:="i2cset -y -a 1 0x77 0xF4 0x2E";
+    --W2: String:="i2cset -y -a 1 0x5d 0x13 0x01";
+    --W3: String:="i2cset -y -a 1 0x5d 0x14 0x9";
+   
     procedure write is
         function System (Cmd : String) return Integer is
             function C_System (S : Interfaces.C.char_array) return Integer;
@@ -27,12 +22,12 @@ package body i2c is
         pragma Inline (System);
     begin
     R := System (W1);
-    DELAY 0.5;
-    R := System (W2);
-    R := System (W3);
+    --DELAY 0.5;
+    --R := System (W2);
+    --R := System (W3);
     end write;
     
-    procedure read  is
+    function read(D: String)  return Integer is
           function System (Cmd : String) return Integer is
             function C_System (S : Interfaces.C.char_array) return Integer;
         pragma Import (C, C_System, "system");
@@ -40,9 +35,10 @@ package body i2c is
             return C_System (Interfaces.C.To_C (Cmd));        
         end System;
         pragma Inline (System);
-	Com: String:="sudo chmod +x i2c.sh && ./i2c.sh";
+	R2: String:="i2cget -y -a 1 0x77" & D;
     begin
-    V1 := System (Com);
+    V1 := System (R2);
+    return V1;
     end read;
 
 end i2c;
