@@ -21,7 +21,7 @@ package body i2c is
         end System;
         pragma Inline (System);
     begin
-    R := System (W1);
+    R1 := System (W1);
     --DELAY 0.5;
     --R := System (W2);
     --R := System (W3);
