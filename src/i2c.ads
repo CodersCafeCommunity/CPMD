@@ -5,5 +5,5 @@ with Ada.Integer_Text_IO;
 
 package I2C is
 	procedure write;
-	function read return Integer ;
+	function read(D: String) return Integer ;
 end I2C; 
