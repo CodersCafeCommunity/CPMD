@@ -28,7 +28,7 @@ package body i2c is
     end write;
     
     function read(D: String)  return Integer is
-          function System (Cmd : String) return Integer is
+          function System (Cmd : Unbounded_String) return Integer is
             function C_System (S : Interfaces.C.char_array) return Integer;
         pragma Import (C, C_System, "system");
         begin
