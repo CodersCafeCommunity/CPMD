@@ -35,7 +35,7 @@ package body i2c is
         end System;
         pragma Inline (System);
 	R2: String:="i2cget -y 1 77 0xF6";
-    D:  String:= D;
+    F:String:= D;
     begin
     V1 := System (R2);
     return V1;
