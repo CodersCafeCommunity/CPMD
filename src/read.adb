@@ -6,5 +6,6 @@ with i2c;
 procedure Read is 
 begin
   i2c.write;
-  Result: Inetger := i2c.read("0xF6");
+  Result := i2c.read("0xF6");
+  Put (Result);
 end Read;
