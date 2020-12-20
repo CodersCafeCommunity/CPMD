@@ -3,7 +3,7 @@ with Ada.Strings.Fixed;
 with Ada.Text_IO;
 with Ada.Integer_Text_IO;
 with GNAT.Expect;
-with Ada.Strings.Unbounded;
+with Ada.Strings.Unbounded;use Ada.Strings.Unbounded;
 with Ada.Text_IO.Unbounded_IO;
 
 package body i2c is
