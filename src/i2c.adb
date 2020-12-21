@@ -26,7 +26,7 @@ package body i2c is
     
     function read(Chip_Address:String; Register_Address: String)  return Unbounded_String is
           function System (Cmd : String) return Unbounded_String is
-            function C_System (S : Interfaces.C.char_array) return String;
+            function C_System (S : Interfaces.C.char_array) return Unbounded_String;
         pragma Import (C, C_System, "system");
         begin
             return C_System (Interfaces.C.To_C (Cmd));        
