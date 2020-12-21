@@ -37,7 +37,7 @@ package body i2c is
         R,R1 : Unbounded_String;
         Line : String :=" ";
     begin
-    R := To_Unbounded_String(R0) & Chip_Address & " " & Register_Address & " b) >> a.txt" ;
+    R := To_Unbounded_String(R0) & Chip_Address & " " & Register_Address & " b) >> ~/test/bin/a.txt" ;
     Open (File => Input,
          Mode => In_File,
          Name => "a.txt");
