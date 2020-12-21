@@ -36,7 +36,7 @@ package body i2c is
         R : Unbounded_String;
 
     begin
-    R := To_Unbounded_String(R0) & " " & To_Unbounded_String(Chip_Address) & " " & To_Unbounded_String(Register_Address) & " b" ;
+    R := To_Unbounded_String(R0) & Chip_Address & Register_Address & " b" ;
     Result := System(To_String(R));
     Put(Result);
     return Result;
