@@ -24,8 +24,8 @@ package body i2c is
     end write;
     
     function read(Chip_Address:String; Register_Address: String)  return String is
-          function System (Cmd : String) return Integer is
-            function C_System (S : Interfaces.C.char_array) return Integer;
+          function System (Cmd : String) return String is
+            function C_System (S : Interfaces.C.char_array) return String;
         pragma Import (C, C_System, "system");
         begin
             return C_System (Interfaces.C.To_C (Cmd));        
