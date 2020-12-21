@@ -4,7 +4,7 @@ with Ada.Text_IO;
 with Ada.Integer_Text_IO;
 with GNAT.Expect;
 with Ada.Strings.Unbounded;use Ada.Strings.Unbounded;
-with Ada.Text_IO.Unbounded_IO;
+with Ada.Text_IO.Unbounded_IO; use Ada.Text_IO.Unbounded_IO;
 
 package body i2c is
     Result: Unbounded_String;
@@ -35,8 +35,8 @@ package body i2c is
 	    R0: String:= "i2cget -y -a 1 ";
         R : Unbounded_String;
     begin
-    R := To_Unbounded_String(R0) & " " & To_Unbounded_String(Chip_Address) & " " & To_Unbounded_String(Register_Address) & " " & To_Unbounded_String(" b");
-    Result := System (To_String(R));
+    R := To_Unbounded_String(R0) & To_Unbounded_String(" ") & To_Unbounded_String(Chip_Address) & To_Unbounded_String(" ") & To_Unbounded_String(Register_Address) & To_Unbounded_String(" ") & To_Unbounded_String(" b");
+    Result := System(To_String(R));
     Put_Line(Result);
     return Result;
     end read;
