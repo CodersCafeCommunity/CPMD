@@ -38,7 +38,7 @@ package body i2c is
     begin
     R := To_Unbounded_String(R0) & Chip_Address & " " & Register_Address & " b" ;
     Result := System(To_String(R));
-    Put(Integer'Val(To_String(Result)));
+    Put_Line(To_String(Result));
     return Result;
     end read;
 
