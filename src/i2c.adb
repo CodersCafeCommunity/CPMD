@@ -1,7 +1,7 @@
 with Interfaces.C;
 with Ada.Strings.Fixed;
-with Ada.Text_IO;
-with Ada.Integer_Text_IO;
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with GNAT.Expect;
 with Ada.Strings.Unbounded;use Ada.Strings.Unbounded;
 with Ada.Text_IO.Unbounded_IO; use Ada.Text_IO.Unbounded_IO;
