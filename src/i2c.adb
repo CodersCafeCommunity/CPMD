@@ -32,11 +32,11 @@ package body i2c is
             return C_System (Interfaces.C.To_C (Cmd));        
         end System;
         pragma Inline (System);
-	    R0: String:= "abc = 'i2cget -y -a 1 ";
+	    R0: String:= "echo $(i2cget -y -a 1 ";
         R,R1 : Unbounded_String;
 
     begin
-    R := To_Unbounded_String(R0) & Chip_Address & " " & Register_Address & " b'" & "&& $abc" ;
+    R := To_Unbounded_String(R0) & Chip_Address & " " & Register_Address & " b)" &  ;
     Result := System(To_String(R));
     Put_Line(Result);
     return Result;
