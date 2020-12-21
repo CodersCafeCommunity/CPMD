@@ -35,14 +35,14 @@ package body i2c is
         pragma Inline (System);
 	    R0: String:= "echo $(i2cget -y -a 1 ";
         R,R1 : Unbounded_String;
-
+        Line : String :=" ";
     begin
     R := To_Unbounded_String(R0) & Chip_Address & " " & Register_Address & " b) >> a.txt" ;
     Open (File => Input,
          Mode => In_File,
          Name => "a.txt");
     R := System(To_String(R));
-    Line : String := Get_Line (Input);
+    Line := Get_Line (Input);
     Put_Line(Line);
     return Result;
     end read;
