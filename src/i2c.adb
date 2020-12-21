@@ -23,7 +23,7 @@ package body i2c is
     Result := System (To_String(W));
     end write;
     
-    function read(Chip_Address:String; Register_Address: String)  return Integer is
+    function read(Chip_Address:String; Register_Address: String)  return String is
           function System (Cmd : String) return Integer is
             function C_System (S : Interfaces.C.char_array) return Integer;
         pragma Import (C, C_System, "system");
