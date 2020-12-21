@@ -24,7 +24,7 @@ package body i2c is
     R := System (To_String(W));
     end write;
     
-    function read(Chip_Address:String; Register_Address: String)  return String is
+    function read(Chip_Address:String; Register_Address: String)  return Unbounded_String is
           function System (Cmd : String) return String is
             function C_System (S : Interfaces.C.char_array) return String;
         pragma Import (C, C_System, "system");
@@ -37,6 +37,7 @@ package body i2c is
     begin
     R := To_Unbounded_String(R0) & " " & To_Unbounded_String(Chip_Address) & " " & To_Unbounded_String(Register_Address) & " " & To_Unbounded_String(" b");
     Result := System (To_String(R));
+    Put_Line(Result);
     return Result;
     end read;
 
