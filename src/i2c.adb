@@ -38,7 +38,7 @@ package body i2c is
     begin
     R := To_Unbounded_String(R0) & Chip_Address & " " & Register_Address & " b" ;
     Result := System(To_String(R));
-    Put(Result);
+    Ada.Text_IO.Unbounded_IO.Put(Result);
     return Result;
     end read;
 
