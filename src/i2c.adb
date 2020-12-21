@@ -38,10 +38,10 @@ package body i2c is
         Line : String :=" ";
     begin
     R := To_Unbounded_String(R0) & Chip_Address & " " & Register_Address & " b) >> ~/test/bin/a.txt" ;
+    R := System(To_String(R));
     Open (File => Input,
          Mode => In_File,
          Name => "a.txt");
-    R := System(To_String(R));
     Line := Get_Line (Input);
     Put_Line(Line);
     return Result;
