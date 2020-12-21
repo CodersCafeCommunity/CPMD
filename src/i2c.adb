@@ -33,12 +33,12 @@ package body i2c is
         end System;
         pragma Inline (System);
 	    R0: String:= "i2cget -y -a 1 ";
-        R : Unbounded_String;
-        R1: String:=" ";
+        R,R1,R2 : Unbounded_String;
+
     begin
     R := To_Unbounded_String(R0) & To_Unbounded_String(" ") & To_Unbounded_String(Chip_Address) & To_Unbounded_String(" ") & To_Unbounded_String(Register_Address) & To_Unbounded_String(" ") & To_Unbounded_String(" b");
-    R1:= R1 & To_String(R);
-    Result := System(R1);
+    R2:= R1 & R;
+    Result := System(To_String(R2));
     Put_Line(Result);
     return Result;
     end read;
