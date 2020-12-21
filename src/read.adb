@@ -7,5 +7,5 @@ procedure Read is
 Result: Integer;
 begin
   i2c.write;
-  Result := i2c.read(0xF6);
+  Result := i2c.read("0xF6");
 end Read;
