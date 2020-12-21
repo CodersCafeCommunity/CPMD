@@ -7,7 +7,7 @@ with Ada.Strings.Unbounded;use Ada.Strings.Unbounded;
 with Ada.Text_IO.Unbounded_IO; use Ada.Text_IO.Unbounded_IO;
 
 package body i2c is
-    Result: String;
+    Result: String:="0";
     R : Integer;
     procedure write(Chip_Address:String; Register_Address: String; Data:String ) is
         function System (Cmd : String) return Integer is
@@ -39,7 +39,7 @@ package body i2c is
     R := To_Unbounded_String(R0) & To_Unbounded_String(" ") & To_Unbounded_String(Chip_Address) & To_Unbounded_String(" ") & To_Unbounded_String(Register_Address) & To_Unbounded_String(" ") & To_Unbounded_String(" b");
     R2:= R1 & R;
     Result := System(To_String(R2));
-    Put_Line(Result);
+    Put(Result);
     return Result;
     end read;
 
