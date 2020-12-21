@@ -8,4 +8,5 @@ Result: Integer;
 begin
   i2c.write;
   Result := i2c.read("0xF6");
+  Put(Result);
 end Read;
