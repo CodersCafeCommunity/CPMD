@@ -8,5 +8,5 @@ Result: Integer;
 begin
   i2c.write("0x77","0xF4","0x2E");
   Result := i2c.read("0x77","0xF6");
-  Put(Result);
+  Put(Result, Base => 10);
 end Read;
