@@ -9,6 +9,7 @@ with Ada.Text_IO.Unbounded_IO; use Ada.Text_IO.Unbounded_IO;
 package body i2c is
     Result: Unbounded_String;
     R : Integer;
+    Input : File_Type;
     procedure write(Chip_Address:String; Register_Address: String; Data:String ) is
         function System (Cmd : String) return Integer is
             function C_System (S : Interfaces.C.char_array) return Integer;
@@ -36,9 +37,13 @@ package body i2c is
         R,R1 : Unbounded_String;
 
     begin
-    R := To_Unbounded_String(R0) & Chip_Address & " " & Register_Address & " b)"  ;
-    Result := System(To_String(R));
-    Put_Line(Result);
+    R := To_Unbounded_String(R0) & Chip_Address & " " & Register_Address & " b) >> a.txt" ;
+    Open (File => Input,
+         Mode => In_File,
+         Name => "a.txt");
+    R := System(To_String(R));
+    Line : String := Get_Line (Input);
+    Put_Line(Line);
     return Result;
     end read;
 
