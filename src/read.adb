@@ -6,8 +6,10 @@ with Ada.Text_IO.Unbounded_IO;use Ada.Text_IO.Unbounded_IO;
 with gpio;
 
 procedure Read is 
+Result:Integer;
 begin
   gpio.pinMode(23,"output");
   gpio.write(23,1);
-  Put_Line(Integer'Image(gpio.read(23)));
+  Result := gpio.read(23)
+  Put_Line(Integer'Image(Result));
 end Read;
