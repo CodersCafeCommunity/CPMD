@@ -10,7 +10,7 @@ procedure System_Command is
    Status     : aliased Integer;
    Separators : constant String := LF & CR;
    Reply_List : Slice_Set;
-   A:= Integer;
+
  
 begin
    Args := Argument_String_To_List (Command);
@@ -26,19 +26,7 @@ begin
     
    begin
       Free (Args);
-      -- split the output in a slice for easier manipulation
-      if Status = 0 then
-         Create (S          => Reply_List,
-                 From       => Response,
-                 Separators => Separators,
-                 Mode       => Multiple);
-      end if;
+      Put_Line(Response);
    end;
-   -- do something with the system output. Just print it out
-   for I in 1 .. Slice_Count (Reply_List) loop
-      A := Slice (Reply_List, I);
-      Put_Line (A);
-      
-   end loop;
  
 end System_Command;
