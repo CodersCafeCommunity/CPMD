@@ -50,7 +50,7 @@ package body gpio is
         readValue     : Unbounded_String;
         R            : Integer;
     begin
-    setValue:= To_Unbounded_String(gpio_cmd) & " " & To_Unbounded_String(Integer'Image(Pin));
+    readValue:= To_Unbounded_String(gpio_cmd) & " " & To_Unbounded_String(Integer'Image(Pin));
     R := System (To_String(readValue));
     return R;
     end read;
