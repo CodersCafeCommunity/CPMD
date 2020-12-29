@@ -46,11 +46,11 @@ package body gpio is
             return C_System (Interfaces.C.To_C(Cmd));        
         end System; 
         pragma Inline (System);
-        gpio_cmd     : String:="gpio -g read";
+        gpio_cmd     : String:="a=`gpio -g read";
         readValue     : Unbounded_String;
         R            : Integer;
     begin
-    readValue:= To_Unbounded_String(gpio_cmd) & " " & To_Unbounded_String(Integer'Image(Pin));
+    readValue:= To_Unbounded_String(gpio_cmd) & " " & To_Unbounded_String(Integer'Image(Pin)) & "` && echo $a";
     R := System (To_String(readValue));
     return R;
     end read;
