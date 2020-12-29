@@ -10,6 +10,7 @@ procedure System_Command is
    Status     : aliased Integer;
    Separators : constant String := LF & CR;
    Reply_List : Slice_Set;
+   A : Integer;
 
  
 begin
@@ -26,7 +27,8 @@ begin
     
    begin
       Free (Args);
-      Put_Line(Response);
+      A = Integer'Value(Response)+1
+      Put_Line(Integer'Image(A));
    end;
  
 end System_Command;
