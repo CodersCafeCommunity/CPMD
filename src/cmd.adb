@@ -5,7 +5,7 @@ with GNAT.OS_Lib;            use GNAT.OS_Lib;
 with GNAT.String_Split;      use GNAT.String_Split;
  
 procedure System_Command is
-   Command    : String          := "ls -l";
+   Command    : String          := "gpio -g read 23";
    Args       : Argument_List_Access;
    Status     : aliased Integer;
    Separators : constant String := LF & CR;
@@ -21,6 +21,7 @@ begin
            Arguments => Args (Args'First + 1 .. Args'Last),
            Input     => "",
            Status    => Status'Access);
+    A: Integer;
    begin
       Free (Args);
       -- split the output in a slice for easier manipulation
@@ -32,8 +33,10 @@ begin
       end if;
    end;
    -- do something with the system output. Just print it out
-   for I in 4 .. Slice_Count (Reply_List) loop
-      Put_Line (Slice (Reply_List, I));
+   for I in 1 .. Slice_Count (Reply_List) loop
+      A = Slice (Reply_List, I);
+      Put_Line (A+2)
+      
    end loop;
  
 end System_Command;
