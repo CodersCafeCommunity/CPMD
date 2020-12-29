@@ -33,7 +33,7 @@ begin
    begin
       Free (Args);
       --A := Integer'Value(Response)+1;
-      Put_Line(replace_element(Response(1),1,"16"));
+      Put_Line(replace_element(Response(1),"16#"));
    end;
  
 end System_Command;
