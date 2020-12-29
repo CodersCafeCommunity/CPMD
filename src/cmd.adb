@@ -33,7 +33,7 @@ begin
    begin
       Free (Args);
       --A := Integer'Value(Response)+1;
-      Put_Line(Fixed.Replace_Slice (Response, 0, 2, "16#"));
+      Put_Line(Replace_Slice (Response, 0, 2, "16#"));
    end;
  
 end System_Command;
