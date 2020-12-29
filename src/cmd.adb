@@ -28,7 +28,7 @@ begin
    begin
       Free (Args);
       --A := Integer'Value(Response)+1;
-      Put_Line(Response);
+      Put_Line(replace_element(Response(1),'16'););
    end;
  
 end System_Command;
