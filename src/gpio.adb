@@ -18,7 +18,7 @@ package body gpio is
         setMode       : Unbounded_String;
         R             : Integer;
     begin
-    setMode:= To_Unbounded_String(gpio_cmd) & " " & To_Unbounded_String(Integer.toString(Pin)) & " " & To_Unbounded_String(Mode);
+    setMode:= To_Unbounded_String(gpio_cmd) & " " & To_Unbounded_String(ToString(Pin)) & " " & To_Unbounded_String(Mode);
     R := System (To_String(setMode));
     end pinMode;
 
@@ -34,7 +34,7 @@ package body gpio is
         setValue     : Unbounded_String;
         R            : Integer;
     begin
-    setValue:= To_Unbounded_String(gpio_cmd) & " " & To_Unbounded_String(Integer.toString(Pin)) & " " & To_Unbounded_String(Integer. toString(Value));
+    setValue:= To_Unbounded_String(gpio_cmd) & " " & To_Unbounded_String(ToString(Pin)) & " " & To_Unbounded_String(ToString(Value));
     R := System (To_String(setValue));
     end write;
 end gpio;
