@@ -27,7 +27,7 @@ begin
     
    begin
       Free (Args);
-      A = Integer'Value(Response)+1
+      A := Integer'Value(Response)+1;
       Put_Line(Integer'Image(A));
    end;
  
