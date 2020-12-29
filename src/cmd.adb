@@ -5,12 +5,12 @@ with GNAT.OS_Lib;            use GNAT.OS_Lib;
 with GNAT.String_Split;      use GNAT.String_Split;
  
 procedure System_Command is
-   Command    : String          := "gpio -g read 23";
+   Command    : String          := "i2cset -y -a 1 0x77 0xF4 0x2E && i2cget -y -a 1 0x77 0xF6";
    Args       : Argument_List_Access;
    Status     : aliased Integer;
    Separators : constant String := LF & CR;
    Reply_List : Slice_Set;
-   A : Integer;
+   --A : Integer;
 
  
 begin
@@ -27,8 +27,8 @@ begin
     
    begin
       Free (Args);
-      A := Integer'Value(Response)+1;
-      Put_Line(Integer'Image(A));
+      --A := Integer'Value(Response)+1;
+      Put_Line(Respone);
    end;
  
 end System_Command;
