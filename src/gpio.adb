@@ -6,7 +6,7 @@ with Ada.Strings.Unbounded;use Ada.Strings.Unbounded;
 with Ada.Text_IO.Unbounded_IO;
 
 package body gpio is
-    procedure pinMode(Pin: Integer, Mode: String) is
+    procedure pinMode(Pin: Integer; Mode: String) is
         function System (Cmd : String) return Integer is
             function C_System (S : Interfaces.C.char_array) return Integer;
         pragma Import (C, C_System, "system");
@@ -22,7 +22,7 @@ package body gpio is
     R := System (To_String(setMode));
     end pinMode;
 
-    procedure write(Pin:Integer, Value:Integer ) is
+    procedure write(Pin:Integer; Value:Integer ) is
         function System (Cmd : String) return Integer is
             function C_System (S : Interfaces.C.char_array) return Integer;
         pragma Import (C, C_System, "system");
