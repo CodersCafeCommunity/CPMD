@@ -5,7 +5,7 @@ with GNAT.OS_Lib;            use GNAT.OS_Lib;
 with GNAT.String_Split;      use GNAT.String_Split;
  
 procedure System_Command is
-   Command    : String          := "i2cset -y -a 1 0x77 0xF4 0x2E && i2cget -y -a 1 0x77 0xF6";
+   Command    : String          := "i2cget -y -a 1 0x77 0xF6";
    Args       : Argument_List_Access;
    Status     : aliased Integer;
    Separators : constant String := LF & CR;
