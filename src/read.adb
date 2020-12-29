@@ -10,6 +10,6 @@ Result:Integer;
 begin
   gpio.pinMode(23,"output");
   gpio.write(23,1);
-  Result := gpio.read(23)
+  Result := gpio.read(23);
   Put_Line(Integer'Image(Result));
 end Read;
