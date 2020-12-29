@@ -32,7 +32,7 @@ begin
       end if;
    end;
    -- do something with the system output. Just print it out
-   for I in 5 .. Slice_Count (Reply_List) loop
+   for I in 3 .. Slice_Count (Reply_List) loop
       Put_Line (Slice (Reply_List, I));
    end loop;
  
