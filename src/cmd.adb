@@ -21,7 +21,7 @@ begin
            Arguments => Args (Args'First + 1 .. Args'Last),
            Input     => "",
            Status    => Status'Access);
-    A: Integer;
+    A:= String;
    begin
       Free (Args);
       -- split the output in a slice for easier manipulation
@@ -34,8 +34,8 @@ begin
    end;
    -- do something with the system output. Just print it out
    for I in 1 .. Slice_Count (Reply_List) loop
-      A = Slice (Reply_List, I);
-      Put_Line (A&"2")
+      A := Slice (Reply_List, I);
+      Put_Line (A&"2");
       
    end loop;
  
