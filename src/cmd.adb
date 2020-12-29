@@ -32,8 +32,10 @@ begin
     
    begin
       Free (Args);
+      
       --A := Integer'Value(Response)+1;
-      Put_Line(Replace_Slice (Response, 1,2 , "16#"));
+      
+      Put_Line(Integer'Value(Replace_Slice (Response, 1,2 ,"16#") & "#"));
    end;
  
 end System_Command;
