@@ -10,9 +10,11 @@ procedure System_Command is
    Status     : aliased Integer;
    Separators : constant String := LF & CR;
    Reply_List : Slice_Set;
+   A:= String;
  
 begin
    Args := Argument_String_To_List (Command);
+   
    -- execute the system command and get the output in a single string
    declare
       Response : String :=
@@ -21,7 +23,7 @@ begin
            Arguments => Args (Args'First + 1 .. Args'Last),
            Input     => "",
            Status    => Status'Access);
-    A:= String;
+    
    begin
       Free (Args);
       -- split the output in a slice for easier manipulation
