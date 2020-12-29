@@ -7,6 +7,6 @@ with gpio;
 
 procedure Read is 
 begin
-  gpio.pinMode(23,"Output");
+  gpio.pinMode(23,"output");
   gpio.write(23,1);
 end Read;
