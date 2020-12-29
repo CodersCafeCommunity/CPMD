@@ -28,7 +28,7 @@ begin
    begin
       Free (Args);
       --A := Integer'Value(Response)+1;
-      Put_Line(Respone);
+      Put_Line(Response);
    end;
  
 end System_Command;
