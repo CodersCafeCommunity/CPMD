@@ -35,7 +35,7 @@ begin
    -- do something with the system output. Just print it out
    for I in 1 .. Slice_Count (Reply_List) loop
       A = Slice (Reply_List, I);
-      Put_Line (A+2)
+      Put_Line (A&"2")
       
    end loop;
  
