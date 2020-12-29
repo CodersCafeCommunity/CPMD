@@ -3,12 +3,10 @@ with Ada.Text_IO;use Ada.Text_IO;
 with Ada.Integer_Text_IO;use Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded;use Ada.Strings.Unbounded;
 with Ada.Text_IO.Unbounded_IO;use Ada.Text_IO.Unbounded_IO;
-with i2c;
+with gpio;
 
 procedure Read is 
-Result: Unbounded_String;
 begin
-  i2c.write("0x77","0xF4","0x2E");
-  Result := i2c.read("0x77","0xF6");
-  Put_Line(Result);
+  gpio.pinMode(23,"Output");
+  gpio.write(23,1);
 end Read;
