@@ -9,7 +9,7 @@ procedure Read is
 Result:Integer;
 begin
   gpio.pinMode(23,"output");
-  gpio.write(23,1);
+  gpio.write(23,0);
   Result := gpio.read(23);
   Put_Line(Integer'Image(Result));
 end Read;
