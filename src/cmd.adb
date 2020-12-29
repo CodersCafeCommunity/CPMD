@@ -10,7 +10,7 @@ procedure System_Command is
    Status     : aliased Integer;
    Separators : constant String := LF & CR;
    Reply_List : Slice_Set;
-   A:= String;
+   A:= Integer;
  
 begin
    Args := Argument_String_To_List (Command);
@@ -37,7 +37,7 @@ begin
    -- do something with the system output. Just print it out
    for I in 1 .. Slice_Count (Reply_List) loop
       A := Slice (Reply_List, I);
-      Put_Line (A&"2");
+      Put_Line (A);
       
    end loop;
  
