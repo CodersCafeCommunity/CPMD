@@ -9,4 +9,5 @@ procedure Read is
 begin
   gpio.pinMode(23,"output");
   gpio.write(23,1);
+  Put_Line(Integer'Image(gpio.read(23)));
 end Read;

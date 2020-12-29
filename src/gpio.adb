@@ -37,4 +37,21 @@ package body gpio is
     setValue:= To_Unbounded_String(gpio_cmd) & " " & To_Unbounded_String(Integer'Image(Pin)) & " " & To_Unbounded_String(Integer'Image(Value));
     R := System (To_String(setValue));
     end write;
+
+    function read(Pin:Integer) return Integer is
+        function System (Cmd : String) return Integer is
+            function C_System (S : Interfaces.C.char_array) return Integer;
+        pragma Import (C, C_System, "system");
+        begin
+            return C_System (Interfaces.C.To_C(Cmd));        
+        end System; 
+        pragma Inline (System);
+        gpio_cmd     : String:="gpio -g read";
+        readValue     : Unbounded_String;
+        R            : Integer;
+    begin
+    setValue:= To_Unbounded_String(gpio_cmd) & " " & To_Unbounded_String(Integer'Image(Pin));
+    R := System (To_String(readValue));
+    return R;
+    end read;
 end gpio;
