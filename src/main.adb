@@ -9,13 +9,15 @@ with convert; use convert;
 
 procedure read is
   Result: Slice_set;
+  Value,Volt, Rs, R0 : Float;
     begin
-      loop 
       Result := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
       DELAY 3.0;
-      Result := cmd.execute("cat /dev/ttyACM0");
-      for I in 1 .. Slice_Count(Result)-1 loop
-      Put_Line (Float'Image(string2float(Slice(Result, I))));
-      end loop;
-      end loop;
+      Result:= cmd.execute("cat /dev/ttyACM0");
+      Value := string2float(Slice(Result, 1));
+      Volt  := getSensorVolt(Value);
+      Rs    := getRs(Volt);
+      R0    := getR0(Rs);
+      Put_Line(Float'Image(R0));
+
 end read;
