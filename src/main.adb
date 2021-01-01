@@ -12,6 +12,7 @@ procedure read is
   Result: Slice_set;
   Value,Volt, Rs, R0 : Float;
     begin
+      loop
       Result := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
       DELAY 3.0;
       Result:= cmd.execute("cat /dev/ttyACM0");
@@ -20,5 +21,6 @@ procedure read is
       Rs    := getRs_air(Volt);
       R0    := getR0(Rs);
       Put_Line(Float'Image(R0));
+      end loop;
 
 end read;
