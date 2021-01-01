@@ -14,7 +14,7 @@ procedure read is
       DELAY 3.0;
       Result := cmd.execute("cat /dev/ttyACM0");
       for I in 1 .. Slice_Count(Result) loop
-      Put_Line (Slice(Result, I));
+      Put_Line (FLoat'Image(Float(Slice(Result, I))));
       end loop;
       end loop;
 end read;
