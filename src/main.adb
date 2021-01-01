@@ -11,7 +11,5 @@ procedure read is
     begin
       Result0 := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
       Result1 := cmd.execute("cat < /dev/ttyACM0");
-      for I in 1 .. Slice_Count(Result1) loop
-      Put_Line (Slice(Result1, I));
-      end loop;
+      Put_Line (Result1);
 end read;
