@@ -14,7 +14,7 @@ procedure read is
       Result := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
       DELAY 3.0;
       Result := cmd.execute("cat /dev/ttyACM0");
-      for I in 1 .. Slice_Count(Result) loop
+      for I in 1 .. Slice_Count(Result)-1 loop
       Put_Line (Float'Image(string2float(Slice(Result, I))));
       end loop;
       end loop;
