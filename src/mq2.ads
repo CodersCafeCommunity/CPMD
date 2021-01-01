@@ -6,3 +6,4 @@ package body mq2 is
     function getSensorVolt(SensorValue : Float) return Float;
     function getRs_air(SensorVolt : Float) return Float;
     function getR0(Rs_air : Float) return Float;
+end mq2;
