@@ -18,8 +18,11 @@ procedure read is
       DELAY 3.0;
       Result:= cmd.execute("cat /dev/ttyACM0");
       Value := string2float(Slice(Result, 1));
-      R := R + Value;
       Put_Line(Integer'Image(I));
+      Put_Line(Float'Image(Value));
+      Put_Line("----------");
+      R := R + Value;
+      
     end loop;
       Value := R/Float(20);
       Volt  := getSensorVolt(Value);
