@@ -9,7 +9,7 @@ package  body convert is
 
     function string2int(input : String) return Integer is
         begin
-            return((Integer'Value(string)));
+            return((Integer'Value(input)));
         end string2int;
 
     function int2string(int : Integer) return String is
@@ -21,7 +21,7 @@ package  body convert is
         I : Integer;
         F : Float;
         begin
-            I := Integer'Value(string);
+            I := Integer'Value(input);
             F := Float(I);
             return F;
         end string2float;
