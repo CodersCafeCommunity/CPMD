@@ -9,7 +9,8 @@ with cmd; use cmd;
 procedure read is 
   Result: Slice_set;
     begin
-      Result := cmd.execute("ls -l");
+      Result := cmd.execute("stty 115200 -F /dev/ttyACM0");
+      Result := cmd.execute("cat /dev/ttyACM0");
       for I in 1 .. Slice_Count(Result) loop
       Put_Line (Slice(Result, I));
       end loop;
