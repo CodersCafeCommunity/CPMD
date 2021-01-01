@@ -7,7 +7,7 @@ with GNAT.String_Split;      use GNAT.String_Split;
 
 package body cmd is 
    function execute (CMD : String) return Slice_Set is
-      Command    : String := " " & CMD ;
+      Command    : String := CMD ;
       Args       : Argument_List_Access;
       Status     : aliased Integer;
       Separators : constant String := LF & CR;
