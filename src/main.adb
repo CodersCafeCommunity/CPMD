@@ -5,6 +5,7 @@ with Ada.Strings.Unbounded;use Ada.Strings.Unbounded;
 with Ada.Text_IO.Unbounded_IO;use Ada.Text_IO.Unbounded_IO;
 with GNAT.String_Split;      use GNAT.String_Split;
 with cmd; use cmd;
+with convert; use convert;
 
 procedure read is
   Result: Slice_set;
@@ -14,7 +15,7 @@ procedure read is
       DELAY 3.0;
       Result := cmd.execute("cat /dev/ttyACM0");
       for I in 1 .. Slice_Count(Result) loop
-      Put_Line (FLoat'Image(Float(Slice(Result, I))));
+      Put_Line (Float'Image(string2float(Slice(Result, I)))));
       end loop;
       end loop;
 end read;
