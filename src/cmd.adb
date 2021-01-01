@@ -5,7 +5,7 @@ with GNAT.Expect;            use GNAT.Expect;
 with GNAT.OS_Lib;            use GNAT.OS_Lib;
 with GNAT.String_Split;      use GNAT.String_Split;
 
-package cmd is
+package body cmd is 
    function execute (CMD : String) return Slice_Set is
       Command    : String := " " & CMD ;
       Args       : Argument_List_Access;
