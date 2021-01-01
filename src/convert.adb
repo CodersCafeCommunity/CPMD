@@ -18,10 +18,8 @@ package  body convert is
         end int2string;
     
     function string2float(input : String) return Float is
-        --I : Integer;
         F : Float;
         begin
-            --I := Integer'Value(input);
             F := Float'Value(input);
             return F;
         end string2float;
