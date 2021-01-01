@@ -13,7 +13,7 @@ procedure read is
   Value,Volt, Rs, R0 : Float;
   R : Float := 0.0;
     begin
-    for I in 1..40 loop
+    for I in 1..60 loop
       Result := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
       DELAY 3.0;
       Result:= cmd.execute("cat /dev/ttyACM0");
@@ -24,7 +24,7 @@ procedure read is
       R := R + Value;
       
     end loop;
-      Value := R/Float(20);
+      Value := R/Float(60);
       Volt  := getSensorVolt(Value);
       Put_Line(Float'Image(Volt));
       Rs    := getRs_air(Volt);
