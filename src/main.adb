@@ -14,6 +14,6 @@ procedure read is
       DELAY 2.0;
       Result := cmd.execute("cat /dev/ttyACM0");
       for I in 1 .. Slice_Count(Result) loop
-      Put_Line (Slice(Result, 1));
+      Put_Line (Slice(Result, I));
       end loop;
 end read;
