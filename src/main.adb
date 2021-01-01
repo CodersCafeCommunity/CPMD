@@ -11,7 +11,7 @@ procedure read is
   Result: Slice_set;
     begin
       Result0 := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
-      Result := cmd.execute("cat < /dev/ttyACM0");
+      Result := cmd.execute("ls -l");
       for I in 1 .. Slice_Count(Result) loop
       Put_Line (Slice(Result, I));
       end loop;
