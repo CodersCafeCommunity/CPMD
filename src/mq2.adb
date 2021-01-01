@@ -22,7 +22,7 @@ package body mq2 is
     function getR0(Rs_air : Float) return Float is
         R0 : Float;
         begin
-            R0 := Rs/Float(9.8);
+            R0 := Rs_air/Float(9.8);
             return R0;
         end getR0;
 
