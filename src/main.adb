@@ -11,5 +11,5 @@ procedure read is
     begin
       Result0 := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
       Result1 := cmd.execute("cat < /dev/ttyACM0");
-      Put_Line (Result1(1));
+      Put_Line (Result1);
 end read;
