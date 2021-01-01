@@ -17,7 +17,7 @@ procedure read is
       Result:= cmd.execute("cat /dev/ttyACM0");
       Value := string2float(Slice(Result, 1));
       Volt  := getSensorVolt(Value);
-      Rs    := getRs(Volt);
+      Rs    := getRs_air(Volt);
       R0    := getR0(Rs);
       Put_Line(Float'Image(R0));
 
