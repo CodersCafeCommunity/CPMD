@@ -13,7 +13,7 @@ procedure read is
       Result0 := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
       DELAY 2.0;
       Result := cmd.execute("cat < /dev/ttyACM0");
-      for I in 1 .. Slice_Count(Result) loop
-      Put_Line (Slice(Result, I));
-      end loop;
+      --for I in 1 .. Slice_Count(Result) loop
+      Put_Line (Slice(Result, 1));
+     -- end loop;
 end read;
