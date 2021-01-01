@@ -6,11 +6,10 @@ with Ada.Text_IO.Unbounded_IO;use Ada.Text_IO.Unbounded_IO;
 with GNAT.String_Split;      use GNAT.String_Split;
 with cmd; use cmd;
 
-procedure read is 
-  Result0: Slice_set;
+procedure read is
   Result: Slice_set;
     begin
-      Result0 := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
+      Result := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
       DELAY 0.5;
       Result := cmd.execute("cat /dev/ttyACM0");
       for I in 1 .. Slice_Count(Result) loop
