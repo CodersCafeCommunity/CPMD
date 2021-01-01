@@ -4,7 +4,7 @@ with Ada.Text_IO;       use Ada.Text_IO;
 package  body convert is
     function hex2int(input : String) return Integer is
         begin
-            return(Integer'Value(Replace_Slice (hex, 1,2 ,"16#") & "#"));
+            return(Integer'Value(Replace_Slice (input, 1,2 ,"16#") & "#"));
         end hex2int;
 
     function string2int(input : String) return Integer is
@@ -14,7 +14,7 @@ package  body convert is
 
     function int2string(input : Integer) return String is
         begin
-            return((Integer'Image(int)));
+            return((Integer'Image(input)));
         end int2string;
     
     function string2float(input : String) return Float is
@@ -22,7 +22,7 @@ package  body convert is
         F : Float;
         begin
             --I := Integer'Value(input);
-            F := Float'Value(I);
+            F := Float'Value(input);
             return F;
         end string2float;
 end convert;
