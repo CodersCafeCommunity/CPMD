@@ -10,7 +10,7 @@ procedure Main is
   Result: Slice_set;
     begin
       Result := cmd.execute("ls -l");
-      for I in 1 .. Slice_Count (Result) loop
-      Put_Line (Slice (Result, I));
+      for I in 1 .. Slice_Count(Result) loop
+      Put_Line (Slice(Result, I));
       end loop;
 end Main;
