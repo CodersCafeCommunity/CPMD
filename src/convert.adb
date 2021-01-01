@@ -1,7 +1,7 @@
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Text_IO;       use Ada.Text_IO;
 
-package convert body is
+package  body convert is
     function hex2int(hex : String) return Integer is
         begin
             return(Integer'Value(Replace_Slice (hex, 1,2 ,"16#") & "#"));
