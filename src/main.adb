@@ -7,11 +7,11 @@ with GNAT.String_Split;      use GNAT.String_Split;
 with cmd; use cmd;
 
 procedure read is 
-  Result: Slice_set;
+  Result0, Result1 : Slice_set;
     begin
       Result := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
-      Result := cmd.execute("cat < /dev/ttyACM0");
-      for I in 1 .. Slice_Count(Result) loop
-      Put_Line (Slice(Result, I));
+      Result1 := cmd.execute("cat < /dev/ttyACM0");
+      for I in 1 .. Slice_Count(Result1) loop
+      Put_Line (Slice(Result1, I));
       end loop;
 end read;
