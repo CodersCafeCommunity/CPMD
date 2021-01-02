@@ -69,7 +69,7 @@ package body mq2 is
             return PPM;
         end getPPM;
 
-    function getPPM_AL(SensorValue : Float, R0_air: Float) return Float is
+    function getPPM_AL(SensorValue : Float; R0_air: Float) return Float is
         SensorVolt, Rs, PPM_AL : Float;
         b : Float := 1.310;
         m : Float := -0.373;
