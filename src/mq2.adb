@@ -58,7 +58,7 @@ package body mq2 is
             Put_Line(Float'Image(Volt));
             Rs_air:= getRs(Volt);
             Put_Line(Float'Image(Rs));
-            R0_air:= getR0(Rs);
+            R0_air:= getR0(Rs_air);
             Put_Line(Float'Image(R0));
             return R0_air;
 
