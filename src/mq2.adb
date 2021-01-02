@@ -1,7 +1,6 @@
 with Text_IO; use Text_IO;
 with Ada.Text_IO;use Ada.Text_IO;
-with Ada.Numerics.Generic_Elementary_Functions; use Ada.Numerics.Generic_Elementary_Functions;
-with Ada.Numerics;
+with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 with GNAT.String_Split;use GNAT.String_Split;
 with cmd; use cmd;
 with convert; use convert;
@@ -69,7 +68,7 @@ package body mq2 is
     function getPPM (R0_air : Float; Rs: Float; b: Float ; m : Float ) return Float is
         PPM : Float;
         begin
-            PPM := ((Ada.Numerics.log(Rs/R0_air),10.0)-b)/m;
+            PPM := ((log(Rs/R0_air),10)-b)/m;
             PPM := 10**PPM;
             return PPM;
         end getPPM;
