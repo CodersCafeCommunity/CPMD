@@ -65,11 +65,11 @@ package body mq2 is
         end calibrateMQ2;
     
 
-    function getPPM (R0_air : Float; Rs: Float; b: Float ; m : Float ) return Float is
-        PPM : Float;
+    function getPPM (R0_air : Float; Rs: Float; b: Float ; m : Float ) return Integer is
+        PPM : Integer;
         begin
             PPM := (log(Rs/R0)-b)/m;
-            PPM := 10**PPM;
+            PPM := 10**Integer(PPM);
             return PPM;
         end getPPM;
 
