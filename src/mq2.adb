@@ -3,6 +3,17 @@ with Ada.Text_IO;use Ada.Text_IO;
 with Ada.Integer_Text_IO;use Ada.Integer_Text_IO;
 
 package body mq2 is
+   function getSensorValue return Float is 
+        Result : Slice_set;
+        Value : Float;
+        begin
+            Result := cmd.execute("stty -F /dev/ttyACM0 115200 -xcase -icanon min 0 time 3");
+            DELAY 3.0;
+            Result:= cmd.execute("cat /dev/ttyACM0");
+            Value := string2float(Slice(Result, 1));
+            return Value;
+        end getSensorValue;
+
     function getSensorVolt(SensorValue : Float) return Float is
         SensorVolt  :  Float;
         Vin : Float := 3.0;
@@ -11,21 +22,63 @@ package body mq2 is
             return SensorVolt;
         end getSensorVolt;
     
-    function getRs_air(SensorVolt : Float) return Float is
-        Rs_air : Float;
-        Vin    : Float := 3.0;
+    function getRs(SensorVolt : Float) return Float is
+        Rs : Float;
+        Vin: Float := 3.0;
         begin
             Rs_air := (Vin-SensorVolt)/SensorVolt;
-            return Rs_air;
-        end getRs_air;
+            return Rs;
+        end getRs;
 
-    function getR0(Rs_air : Float) return Float is
+    function getR0(Rs: Float) return Float is
         R0 : Float;
         begin
-            R0 := Rs_air/Float(9.8);
+            R0 := Rs/Float(9.8);
             return R0;
         end getR0;
 
+    function calibrateMQ2 return Float is
+        Result: Slice_set;
+        Value,Volt, Rs_air, R0_air : Float;
+        R : Float := 0.0;
+        begin
+            for I in 1..200 loop
+                Value := getSensorValue;
+                Put_Line(Integer'Image(I));
+                Put_Line(Float'Image(Value));
+                Put_Line("----------");
+                R := R + Value;
+            end loop;
+
+            Value := R/Float(200);
+            Volt  := getSensorVolt(Value);
+            Put_Line(Float'Image(Volt));
+            Rs    := getRs_air(Volt);
+            Put_Line(Float'Image(Rs));
+            R0    := getR0(Rs);
+            Put_Line(Float'Image(R0));
+            return R0;
+        end calibrateMQ2;
+    
+
+    function getPPM (R0_air : Float; Rs: Float; b: Float ; m : Float ) return Float is
+        PPM : Float;
+        begin
+            PPM := (log(Rs/R0)-b)/m;
+            PPM := 10**PPM;
+            return PPM;
+        end getPPM;
+
+    function getPPM_AL(SensorValue : Float, R0_air: Float) return Float is
+        SensorVolt, Rs, PPM_AL : Float;
+        b : Float := 1.310;
+        m : Float := -0.373;
+        begin
+            SensorVolt := getSensorVolt(SensorValue);
+            Rs := getRs(SensorVolt);
+            PPM_AL := getPPM(R0_air, Rs, b, m);
+            return PPM_AL;
+        end getPPM_AL;       
 end mq2;
 
 
