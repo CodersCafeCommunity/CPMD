@@ -1,6 +1,5 @@
-with Text_IO; use Text_IO;
-with Ada.Text_IO;use Ada.Text_IO;
-with Ada.Integer_Text_IO;use Ada.Integer_Text_IO;
+with cmd; use cmd;
+with convert; use convert;
 
 package body mq2 is
    function getSensorValue return Float is 
@@ -58,7 +57,7 @@ package body mq2 is
             R0_air:= getR0(Rs);
             Put_Line(Float'Image(R0));
             return R0_air;
-            
+
         end calibrateMQ2;
     
 
