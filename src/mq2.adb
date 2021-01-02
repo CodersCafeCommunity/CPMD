@@ -68,7 +68,7 @@ package body mq2 is
     function getPPM (R0_air : Float; Rs: Float; b: Float ; m : Float ) return Float is
         PPM : Float;
         begin
-            PPM := ((log(Rs/R0_air),10.0)-b)/m;
+            PPM := ((Ada.Numerics.log(Rs/R0_air),10.0)-b)/m;
             PPM := 10**PPM;
             return PPM;
         end getPPM;
