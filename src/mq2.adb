@@ -29,7 +29,7 @@ package body mq2 is
         Rs : Float;
         Vin: Float := 3.0;
         begin
-            Rs_air := (Vin-SensorVolt)/SensorVolt;
+            Rs := (Vin-SensorVolt)/SensorVolt;
             return Rs;
         end getRs;
 
