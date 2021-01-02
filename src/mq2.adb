@@ -5,7 +5,7 @@ with Ada.Integer_Text_IO;use Ada.Integer_Text_IO;
 package body mq2 is
     function getSensorVolt(SensorValue : Float) return Float is
         SensorVolt  :  Float;
-        Vin : Float := 5.0;
+        Vin : Float := 3.0;
         begin
             SensorVolt := (SensorValue*Vin)/Float(1023);
             return SensorVolt;
@@ -13,7 +13,7 @@ package body mq2 is
     
     function getRs_air(SensorVolt : Float) return Float is
         Rs_air : Float;
-        Vin    : Float := 5.0;
+        Vin    : Float := 3.0;
         begin
             Rs_air := (Vin-SensorVolt)/SensorVolt;
             return Rs_air;
