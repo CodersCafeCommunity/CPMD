@@ -60,17 +60,16 @@ package body mq2 is
             Rs_air:= getRs(Volt);
             Put_Line(Float'Image(Rs_air));
             R0_air:= getR0(Rs_air);
-            Put_Line(Float'Image(R0));
+            Put_Line(Float'Image(R0_air));
             return R0_air;
-
         end calibrateMQ2;
     
 
-    function getPPM (R0_air : Float; Rs: Float; b: Float ; m : Float ) return Integer is
-        PPM : Integer;
+    function getPPM (R0_air : Float; Rs: Float; b: Float ; m : Float ) return Float is
+        PPM : Float;
         begin
-            PPM := (log(Rs/R0_air)-b)/m;
-            PPM := 10**Integer(PPM);
+            PPM := ((log(Rs/R0_air),10)-b)/m;
+            PPM := 10**PPM;
             return PPM;
         end getPPM;
 
