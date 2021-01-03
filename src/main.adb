@@ -6,10 +6,11 @@ with Ada.Text_IO.Unbounded_IO;use Ada.Text_IO.Unbounded_IO;
 with GNAT.String_Split;      use GNAT.String_Split;
 with mq2;
 with sound;
+with lm35;
 
 procedure read is
   Result: Slice_set;
-  R0_air, SensorValue, dB: Float;
+  R0_air, SensorValue, dB, dC: Float;
   PPM_CO, PPM_CH4, PPM_SMOKE :Integer;
     begin
     ----- Gas Sensor ------
@@ -29,4 +30,9 @@ procedure read is
     Put_Line("SensorValue : " & Float'Image(SensorValue));
     dB := sound.getdB(SensorValue);
     Put_Line("Intensity in dB :" & Float'Image(dB));
+
+    ----- Temperature Sensor -----
+    SensorValue := lm35.getSensorValue;
+    dC := lm35.getdC(SensorValue);
+    Put_Line("Temp in *C :" & Float'Image(dC));
 end read;

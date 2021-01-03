@@ -5,8 +5,9 @@ with GNAT.String_Split;use GNAT.String_Split;
 with cmd; use cmd;
 with convert; use convert;
 
-package sound is
+
+package lm35 is
     function getSensorValue return Float;
     function getSensorVolt(SensorValue : Float) return Float;
-    function getdB (SensorValue : Float) return Float;
-end sound;
+    function getdC (SensorValue : Float) return Float;
+end;
