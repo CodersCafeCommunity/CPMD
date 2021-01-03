@@ -15,7 +15,7 @@ procedure read is
     Put_Line("R0_air : " & Float'Image(R0_air));
     SensorValue := getSensorValue;
     Put_Line("SensorValue : " & Float'Image(SensorValue));
-    PPM_CO := getPPM_AL(SensorValue, R0_air);
+    PPM_CO := getPPM_CO(SensorValue, R0_air);
     PPM := Integer(PPM_CO);
-    Put_Line("PPM_AL : " & Integer'Image(PPM)); 
+    Put_Line("PPM_CO : " & Integer'Image(PPM)); 
 end read;
