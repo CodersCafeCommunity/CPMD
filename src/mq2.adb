@@ -90,7 +90,7 @@ package body mq2 is
         begin
             SensorVolt := getSensorVolt(SensorValue);
             Rs := getRs(SensorVolt);
-            PPM_AL := getPPM(R0_air, Rs, b, m);
+            PPM_CH4 := getPPM(R0_air, Rs, b, m);
             return PPM_CH4;
         end getPPM_CH4;
 
@@ -101,7 +101,7 @@ package body mq2 is
         begin
             SensorVolt := getSensorVolt(SensorValue);
             Rs := getRs(SensorVolt);
-            PPM_AL := getPPM(R0_air, Rs, b, m);
+            PPM_SMOKE := getPPM(R0_air, Rs, b, m);
             return PPM_SMOKE;
         end getPPM_SMOKE;       
 end mq2;
