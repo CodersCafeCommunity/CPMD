@@ -72,16 +72,38 @@ package body mq2 is
             return PPM;
         end getPPM;
 
-    function getPPM_AL(SensorValue : Float; R0_air: Float) return Float is
-        SensorVolt, Rs, PPM_AL : Float;
-        b : Float := 1.310;
-        m : Float := -0.373;
+    function getPPM_CO(SensorValue : Float; R0_air: Float) return Float is
+        SensorVolt, Rs, PPM_CO : Float;
+        b : Float := 1.512;
+        m : Float := -0.339;
         begin
             SensorVolt := getSensorVolt(SensorValue);
             Rs := getRs(SensorVolt);
             PPM_AL := getPPM(R0_air, Rs, b, m);
-            return PPM_AL;
-        end getPPM_AL;       
+            return PPM_CO;
+        end getPPM_CO;
+
+    function getPPM_CH4(SensorValue : Float; R0_air: Float) return Float is
+        SensorVolt, Rs, PPM_CH4 : Float;
+        b : Float := 1.349;
+        m : Float := -0.372;
+        begin
+            SensorVolt := getSensorVolt(SensorValue);
+            Rs := getRs(SensorVolt);
+            PPM_AL := getPPM(R0_air, Rs, b, m);
+            return PPM_CH4;
+        end getPPM_CH4;
+
+    function getPPM_SMOKE(SensorValue : Float; R0_air: Float) return Float is
+        SensorVolt, Rs, PPM_SMOKE : Float;
+        b : Float := 1.617;
+        m : Float := -0.443;
+        begin
+            SensorVolt := getSensorVolt(SensorValue);
+            Rs := getRs(SensorVolt);
+            PPM_AL := getPPM(R0_air, Rs, b, m);
+            return PPM_SMOKE;
+        end getPPM_SMOKE;       
 end mq2;
 
 

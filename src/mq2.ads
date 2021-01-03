@@ -12,5 +12,7 @@ package mq2 is
     function getR0(Rs : Float) return Float;
     function calibrateMQ2 return Float;
     function getPPM (R0_air : Float; Rs: Float; b: Float; m : Float) return Float;
-    function getPPM_AL(SensorValue : Float; R0_air: Float) return Float;
+    function getPPM_CO(SensorValue : Float; R0_air: Float) return Float;
+    function getPPM_CH4(SensorValue : Float; R0_air: Float) return Float;
+    function getPPM_SMOKE(SensorValue : Float; R0_air: Float) return Float;
 end mq2;

@@ -8,14 +8,14 @@ with mq2; use mq2;
 
 procedure read is
   Result: Slice_set;
-  R0_air, SensorValue, PPM_AL : Float;
+  R0_air, SensorValue, PPM_CO : Float;
   PPM : Integer;
     begin
     R0_air := 1.22436;
     Put_Line("R0_air : " & Float'Image(R0_air));
     SensorValue := getSensorValue;
     Put_Line("SensorValue : " & Float'Image(SensorValue));
-    PPM_AL := getPPM_AL(SensorValue, R0_air);
-    PPM := Integer(PPM_AL);
+    PPM_CO := getPPM_AL(SensorValue, R0_air);
+    PPM := Integer(PPM_CO);
     Put_Line("PPM_AL : " & Integer'Image(PPM)); 
 end read;
