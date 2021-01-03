@@ -5,7 +5,7 @@ with GNAT.String_Split;use GNAT.String_Split;
 with cmd; use cmd;
 with convert; use convert;
 
-package body sound is
+package sound is
     function getSensorValue return Float;
     function getdB (SensorValue : Float) return Float;
 end sound;
