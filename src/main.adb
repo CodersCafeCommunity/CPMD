@@ -33,6 +33,7 @@ procedure read is
 
     ----- Temperature Sensor -----
     SensorValue := lm35.getSensorValue;
+    Put_Line("SensorValue : " & Float'Image(SensorValue));
     dC := lm35.getdC(SensorValue);
     Put_Line("Temp in *C :" & Float'Image(dC));
 end read;
