@@ -11,9 +11,9 @@ procedure read is
   R0_air, SensorValue, PPM_AL : Float;
     begin
     R0_air := calibrateMQ2;
-    Put_Line("R0_air",Float'Image(R0_air));
+    Put_Line("R0_air" & Float'Image(R0_air));
     SensorValue := getSensorValue;
-    Put_Line("SensorValue", Float'Image(SensorValue));
+    Put_Line("SensorValue" & Float'Image(SensorValue));
     PPM_AL := getPPM_AL(SensorValue, R0_air);
-    Put_Line("PPM_AL",Float'Image(PPM_AL)); 
+    Put_Line("PPM_AL" & Float'Image(PPM_AL)); 
 end read;
