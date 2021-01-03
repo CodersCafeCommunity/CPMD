@@ -46,21 +46,23 @@ package body mq2 is
         Value,Volt, Rs_air, R0_air : Float;
         R : Float := 0.0;
         begin
-            for I in 1..200 loop
+            for I in 1..20 loop
                 Value := getSensorValue;
-                Put_Line(Integer'Image(I));
-                Put_Line(Float'Image(Value));
-                Put_Line("----------");
+                Put_Line("Calibrating...");
+                --Put_Line(Integer'Image(I));
+                --Put_Line(Float'Image(Value));
+                --Put_Line("----------");
                 R := R + Value;
             end loop;
 
             Value := R/Float(200);
             Volt  := getSensorVolt(Value);
-            Put_Line(Float'Image(Volt));
+            --Put_Line(Float'Image(Volt));
             Rs_air:= getRs(Volt);
-            Put_Line(Float'Image(Rs_air));
+            --Put_Line(Float'Image(Rs_air));
             R0_air:= getR0(Rs_air);
-            Put_Line(Float'Image(R0_air));
+            --Put_Line(Float'Image(R0_air));
+            Put_Line("Calibrated Successfully");
             return R0_air;
         end calibrateMQ2;
     
