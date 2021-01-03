@@ -10,7 +10,7 @@ procedure read is
   Result: Slice_set;
   R0_air, SensorValue, PPM_AL : Float;
     begin
-    R0_air := 0.438828;
+    R0_air := 1.22436;
     Put_Line("R0_air : " & Float'Image(R0_air));
     SensorValue := getSensorValue;
     Put_Line("SensorValue : " & Float'Image(SensorValue));
