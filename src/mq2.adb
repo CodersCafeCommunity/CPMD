@@ -49,19 +49,13 @@ package body mq2 is
             Put_Line("Calibrating...");
             for I in 1..20 loop
                 Value := getSensorValue;
-                --Put_Line(Integer'Image(I));
-                --Put_Line(Float'Image(Value));
-                --Put_Line("----------");
                 R := R + Value;
             end loop;
 
             Value := R/Float(20);
             Volt  := getSensorVolt(Value);
-            --Put_Line(Float'Image(Volt));
             Rs_air:= getRs(Volt);
-            --Put_Line(Float'Image(Rs_air));
             R0_air:= getR0(Rs_air);
-            --Put_Line(Float'Image(R0_air));
             Put_Line("Calibrated Successfully");
             return R0_air;
         end calibrateMQ2;
@@ -69,8 +63,10 @@ package body mq2 is
 
     function getPPM (R0_air : Float; Rs: Float; b: Float ; m : Float ) return Float is
         PPM : Float;
+        Rs_R0: Float;
         begin
-            PPM := Float(Log(Rs/R0_air),10);
+            Rs_R0 := Rs/R0_air
+            PPM := Float(Log(Rs_R0,10));
             PPM := (PPM-b)/m;
             PPM := 10.0 ** PPM;
             return PPM;
