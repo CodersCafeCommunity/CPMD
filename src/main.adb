@@ -26,6 +26,7 @@ procedure read is
 
     ----- Sound Sensor -----
     SensorValue := sound.getSensorValue;
+    Put_Line("SensorValue : " & Float'Image(SensorValue));
     dB := sound.getdB(SensorValue);
     Put_Line("Intensity in dB :" & Float'Image(dB));
 end read;
