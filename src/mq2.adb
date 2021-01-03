@@ -46,9 +46,9 @@ package body mq2 is
         Value,Volt, Rs_air, R0_air : Float;
         R : Float := 0.0;
         begin
+            Put_Line("Calibrating...");
             for I in 1..20 loop
                 Value := getSensorValue;
-                Put_Line("Calibrating...");
                 --Put_Line(Integer'Image(I));
                 --Put_Line(Float'Image(Value));
                 --Put_Line("----------");
