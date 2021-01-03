@@ -55,7 +55,7 @@ package body mq2 is
                 R := R + Value;
             end loop;
 
-            Value := R/Float(200);
+            Value := R/Float(20);
             Volt  := getSensorVolt(Value);
             --Put_Line(Float'Image(Volt));
             Rs_air:= getRs(Volt);
