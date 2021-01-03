@@ -16,14 +16,23 @@ package body sound is
             Value := string2float(Slice(Result, 2));
             return Value;
         end getSensorValue;
+    function getSensorVolt(SensorValue : Float) return Float is
+        SensorVolt  :  Float;
+        Vin : Float := 3.0;
+        begin
+            SensorVolt := (SensorValue*Vin)/Float(1023);
+            return SensorVolt;
+        end getSensorVolt;
 
     function getdB (SensorValue : Float) return Float is
         Vin : Float := 3.0;
+        SensorVolt : Float;
         dB  : Float;
         begin
-            dB := 20.0 * Log((Vin/SensorValue),10.0);
+            SensorVolt := getSensorVolt(SensorValue);
+            dB := 20.0 * Log((Vin/SensorVolt),10.0);
             return dB;
         end getdB;
-        
+
 end sound;
 
