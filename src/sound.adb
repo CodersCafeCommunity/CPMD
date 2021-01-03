@@ -17,7 +17,13 @@ package body sound is
             return Value;
         end getSensorValue;
 
-    function getdB (SensorValue : Float) is
-
-
+    function getdB (SensorValue : Float) return Float is
+        Vin : Float := 3.0;
+        dB  : Float;
         begin
+            dB := 20.0 * Log((Vin/SensorValue),10.0);
+            return dB;
+        end getdB;
+        
+end sound;
+

@@ -8,3 +8,4 @@ with convert; use convert;
 package body sound is
     function getSensorValue return Float;
     function getdB (SensorValue : Float) return Float;
+end sound;
