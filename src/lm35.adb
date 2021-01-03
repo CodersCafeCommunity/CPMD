@@ -29,9 +29,9 @@ package body lm35 is
         dC, SensorValue  : Float;
         begin
             SensorVolt := getSensorVolt(SensorValue);
-            dC := SensorVolt/10.0
+            dC := SensorVolt/10.0;
             return dC;
         end getdC;
 
-end sound;
+end lm35;
 
