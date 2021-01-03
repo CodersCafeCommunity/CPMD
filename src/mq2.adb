@@ -69,11 +69,10 @@ package body mq2 is
 
     function getPPM (R0_air : Float; Rs: Float; b: Float ; m : Float ) return Float is
         PPM : Float;
-        PPM0: Integer;
         begin
             PPM := Float(log(Rs/R0_air));
             PPM := (PPM-b)/m;
-            PPM0 := 10**Integer(PPM);
+            PPM := 10**PPM;
             return PPM;
         end getPPM;
 
