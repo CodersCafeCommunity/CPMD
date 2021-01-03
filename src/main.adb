@@ -8,7 +8,7 @@ with mq2; use mq2;
 
 procedure read is
   Result: Slice_set;
-  R0_air, SensorValue, PPM_CO : Float;
+  R0_air, SensorValue, PPM_CO,PPM_CH4, PPM_SMOKE : Float;
   PPM : Integer;
     begin
     R0_air := 1.22436;
