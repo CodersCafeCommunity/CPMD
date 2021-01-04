@@ -9,6 +9,6 @@ with convert; use convert;
 package googlesheet is
 
     function log (cURL: Unbounded_String) return Slice_Set;
-    function buildcURL(Time:Sting;Temperature:Integer; Sound:Integer; PPM_CO:Integer; PPM_CH4:Integer; PPM_SMOKE:Integer ) return Unbounded_String;
+    function buildcURL(Time:String;Temperature:Integer; Sound:Integer; PPM_CO:Integer; PPM_CH4:Integer; PPM_SMOKE:Integer ) return Unbounded_String;
 
 end googlesheet;
