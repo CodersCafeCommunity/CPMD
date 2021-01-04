@@ -13,7 +13,7 @@ procedure read is
   Result: Slice_set;
   R0_air, SensorValue, dB, dC: Float;
   PPM_CO, PPM_CH4, PPM_SMOKE :Integer;
-  cURL : String;
+  cURL : String:=" ";
     begin
     ----- Gas Sensor ------
     R0_air := 1.22436;

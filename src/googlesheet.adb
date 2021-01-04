@@ -11,7 +11,7 @@ with convert; use convert;
 package body googlesheet is
 
     function log (cURL : String) return Slice_Set is
-        Status : Slice_Set
+        Status : Slice_Set;
         begin
             Status := cmd.execute(cURL);
             return Status;

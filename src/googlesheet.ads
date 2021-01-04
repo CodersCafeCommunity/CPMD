@@ -8,6 +8,6 @@ with convert; use convert;
 package googlesheet is
 
     function log (cURL:String) return Slice_Set;
-    function buildcURL(Temperature:Integer) return String 
+    function buildcURL(Temperature:Integer) return String;
 
 end googlesheet;
