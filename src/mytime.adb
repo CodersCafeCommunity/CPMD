@@ -5,10 +5,10 @@ with Ada.Text_Io; use Ada.Text_Io;
  
 package body mytime is
 
-   function getTime return String is
+   function getTime return Time is
         Now : Time := Clock;
     begin
-        return (Image(Date => Now, Time_Zone => -7*60));
+        return (Date => Now, Time_Zone => -7*60);
     end getTime;
 
 end mytime;
