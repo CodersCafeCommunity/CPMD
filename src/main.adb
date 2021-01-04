@@ -40,6 +40,6 @@ procedure read is
     Put_Line("Temp in *C :" & Float'Image(dC));
 
     ----- cURL-------
-    cURL := buildcURL(Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE));
+    cURL := buildcURL(Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
     Result:= log(cURL);
 end read;
