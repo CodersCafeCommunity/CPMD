@@ -13,7 +13,7 @@ package body googlesheet is
     function log (cURL : Unbounded_String) return Slice_Set is
         Status : Slice_Set;
         begin
-            Status := cmd.execute(cURL);
+            Status := cmd.execute(To_String(cURL));
             return Status;
         end log;
 
