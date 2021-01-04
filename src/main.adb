@@ -13,7 +13,7 @@ procedure read is
   Result: Slice_set;
   R0_air, SensorValue, dB, dC: Float;
   PPM_CO, PPM_CH4, PPM_SMOKE :Integer;
-  cURL : String:=" ";
+  cURL : Unbounded_String;
     begin
     ----- Gas Sensor ------
     R0_air := 1.22436;
@@ -39,6 +39,6 @@ procedure read is
     dC := lm35.getdC(SensorValue);
     Put_Line("Temp in *C :" & Float'Image(dC));
     ----- cURL-------
-    cURL := To_String(buildcURL(Integer(dC)));
+    cURL := buildcURL(Integer(dC));
     Result:= log(cURL);
 end read;
