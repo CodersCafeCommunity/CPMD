@@ -15,7 +15,7 @@ procedure read is
   Result: Slice_set;
   R0_air, SensorValue, dB, dC: Float;
   PPM_CO, PPM_CH4, PPM_SMOKE :Integer;
-  cURL,Timestamp: Unbounded_String;
+  cURL,Time: Unbounded_String;
  
   
     begin
@@ -44,8 +44,8 @@ procedure read is
     Put_Line("Temp in *C :" & Float'Image(dC));
 
     ------ Time ------
-    Timestamp := To_Unbounded_String(getTime);
+    Time := To_Unbounded_String(getTime);
     ----- cURL-------
-    cURL := buildcURL(To_String(Timestamp),Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
+    cURL := buildcURL(To_String(Time),Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
     Result:= log(cURL);
 end read;
