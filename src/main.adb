@@ -5,10 +5,6 @@ with Ada.Strings.Unbounded;use Ada.Strings.Unbounded;
 with Ada.Text_IO.Unbounded_IO;use Ada.Text_IO.Unbounded_IO;
 with GNAT.String_Split;      use GNAT.String_Split;
 
-with Ada.Calendar; use Ada.Calendar;
-with Ada.Calendar.Formatting; use Ada.Calendar.Formatting;
-with Ada.Calendar.Time_Zones; use Ada.Calendar.Time_Zones;
-
 with mq2;
 with sound;
 with lm35;
@@ -19,8 +15,8 @@ procedure read is
   Result: Slice_set;
   R0_air, SensorValue, dB, dC: Float;
   PPM_CO, PPM_CH4, PPM_SMOKE :Integer;
-  cURL: Unbounded_String;
-  Timestamp :Time;
+  cURL,Timestamp: Unbounded_String;
+ 
   
     begin
     ----- Gas Sensor ------
@@ -48,8 +44,8 @@ procedure read is
     Put_Line("Temp in *C :" & Float'Image(dC));
 
     ------ Time ------
-    Timestamp := getTime;
+    Timestamp := To_String(getTime);
     ----- cURL-------
-    cURL := buildcURL(Image(Timestamp),Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
+    cURL := buildcURL(Timestamp,Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
     Result:= log(cURL);
 end read;

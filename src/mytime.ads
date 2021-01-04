@@ -4,5 +4,5 @@ with Ada.Calendar.Time_Zones; use Ada.Calendar.Time_Zones;
 with Ada.Text_Io; use Ada.Text_Io;
  
 package mytime is
-    function getTime return Time;
+    function getTime return String;
 end mytime;
