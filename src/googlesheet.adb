@@ -20,7 +20,7 @@ package body googlesheet is
     function buildcURL(Temperature:Integer) return Unbounded_String is
         cURL    : Unbounded_String;
         begin
-            cURL:= To_Unbounded_String("curl -X POST https://hooks.zapier.com/hooks/catch/9219341/oc7y2ae -d ") & "'first_name"& Integer'Image(Temperature);
+            cURL:= To_Unbounded_String("curl -X POST https://hooks.zapier.com/hooks/catch/9219341/oc7y2ae -d ") & """first_name"& Integer'Image(Temperature)&"""";
             return cURL;
         end buildcURL;
 
