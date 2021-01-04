@@ -39,6 +39,6 @@ procedure read is
     dC := lm35.getdC(SensorValue);
     Put_Line("Temp in *C :" & Float'Image(dC));
     ----- cURL-------
-    cURL := buildcURL(Integer(dC));
+    cURL := To_String(buildcURL(Integer(dC)));
     Result:= log(cURL);
 end read;
