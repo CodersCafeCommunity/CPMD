@@ -21,7 +21,7 @@ package body googlesheet is
         cURL    : Unbounded_String;
         begin
             cURL:= To_Unbounded_String("curl -X POST https://hooks.zapier.com/hooks/catch/9219341/oc7y2ae -d ") & """first_name"& Integer'Image(Temperature)&"""";
-            Put_Line(cURL);
+            Put_Line(To_String(cURL));
             return cURL;
         end buildcURL;
 
