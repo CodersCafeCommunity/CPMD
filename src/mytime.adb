@@ -8,7 +8,7 @@ package body mytime is
    function getTime return Time is
         Now : Time := Clock;
     begin
-        return (Date => Now, Time_Zone => -7*60);
+        return (Date => Now);
     end getTime;
 
 end mytime;
