@@ -7,11 +7,13 @@ with GNAT.String_Split;      use GNAT.String_Split;
 with mq2;
 with sound;
 with lm35;
+with googlesheet; use googlesheet;
 
 procedure read is
   Result: Slice_set;
   R0_air, SensorValue, dB, dC: Float;
   PPM_CO, PPM_CH4, PPM_SMOKE :Integer;
+  cURL : String;
     begin
     ----- Gas Sensor ------
     R0_air := 1.22436;
@@ -36,4 +38,7 @@ procedure read is
     Put_Line("SensorValue : " & Float'Image(SensorValue));
     dC := lm35.getdC(SensorValue);
     Put_Line("Temp in *C :" & Float'Image(dC));
+    ----- cURL-------
+    cURL := buildcURL(Integer(dC));
+    Result:= log(cURL);
 end read;
