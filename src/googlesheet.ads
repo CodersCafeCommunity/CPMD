@@ -8,7 +8,7 @@ with convert; use convert;
 
 package googlesheet is
 
-    function log (cURL:String) return Slice_Set;
+    function log (cURL: Unbounded_String) return Slice_Set;
     function buildcURL(Temperature:Integer) return Unbounded_String;
 
 end googlesheet;
