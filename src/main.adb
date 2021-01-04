@@ -8,12 +8,13 @@ with mq2;
 with sound;
 with lm35;
 with googlesheet; use googlesheet;
+with SystemTime; use SystemTime;
 
 procedure read is
   Result: Slice_set;
   R0_air, SensorValue, dB, dC: Float;
   PPM_CO, PPM_CH4, PPM_SMOKE :Integer;
-  cURL : Unbounded_String;
+  cURL, Time : Unbounded_String;
     begin
     ----- Gas Sensor ------
     R0_air := 1.22436;
@@ -39,7 +40,9 @@ procedure read is
     dC := lm35.getdC(SensorValue);
     Put_Line("Temp in *C :" & Float'Image(dC));
 
+    ------ Time ------
+    Time := To_Unbounded_String(getTime);
     ----- cURL-------
-    cURL := buildcURL(Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
+    cURL := buildcURL(To_String(Time),Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
     Result:= log(cURL);
 end read;
