@@ -18,7 +18,7 @@ package body googlesheet is
         end log;
 
     function buildcURL(Temperature:Integer) return String is
-        cURL    : String;
+        cURL    : String :=" ";
         begin
             cURL:= To_String(To_Unbounded_String("curl -X POST https://hooks.zapier.com/hooks/catch/9219341/oc7y2ae -d ") & "'first_name"& Integer'Image(Temperature));
         return cURL;
