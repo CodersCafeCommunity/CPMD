@@ -44,8 +44,8 @@ procedure read is
     Put_Line("Temp in *C :" & Float'Image(dC));
 
     ------ Time ------
-    Timestamp := To_String(getTime);
+    Timestamp := getTime;
     ----- cURL-------
-    cURL := buildcURL(Timestamp,Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
+    cURL := buildcURL(To_String(Timestamp),Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
     Result:= log(cURL);
 end read;
