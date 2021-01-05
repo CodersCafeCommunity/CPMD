@@ -16,10 +16,10 @@ project AWS is
       case Module is
 
          when "MOD_WIN" =>
-            for Executable ("main.adb") use "aws_win";
+            for Executable ("main.adb") use "gcm_win";
 
          when "MOD_RPI" =>
-            for Executable ("main.adb") use "aws";
+            for Executable ("main.adb") use "gcm";
       end case;
    end Builder;
 
