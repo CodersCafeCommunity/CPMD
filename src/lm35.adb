@@ -19,9 +19,9 @@ package body lm35 is
         
     function getSensorVolt(SensorValue : Float) return Float is
         SensorVolt  :  Float;
-        Vin : Float := 3000.0;
+        Vin : Float := 3.0;
         begin
-            SensorVolt := (SensorValue*Vin)/Float(1023);
+            SensorVolt := ((SensorValue)/Float(1024))*Vin;
             return SensorVolt;
         end getSensorVolt;
 
@@ -29,7 +29,7 @@ package body lm35 is
         dC, SensorVolt  : Float;
         begin
             SensorVolt := getSensorVolt(SensorValue);
-            dC := SensorVolt/10.0;
+            dc := (SensorVolt - 0.5)*100;
             return dC;
         end getdC;
 

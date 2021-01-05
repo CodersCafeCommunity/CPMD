@@ -6,7 +6,6 @@ with GNAT.String_Split;use GNAT.String_Split;
 with cmd; use cmd;
 with convert; use convert;
 
---curl -d "first_name=c&last_name=2&age=30" -X POST https://hooks.zapier.com/hooks/catch/9219341/oc716vc/
 
 package body googlesheet is
 

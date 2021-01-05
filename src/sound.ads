@@ -7,6 +7,6 @@ with convert; use convert;
 
 package sound is
     function getSensorValue return Float;
-    function getSensorVolt(SensorValue : Float) return Float;
+    --function getSensorVolt(SensorValue : Float) return Float;
     function getdB (SensorValue : Float) return Float;
 end sound;
