@@ -22,9 +22,8 @@ procedure main is
     Res : Slice_set;
     R0_air, SensorValue, dB, dC: Float;
     PPM_CO, PPM_CH4, PPM_SMOKE :Integer;
-    PPM_Sum_CO,PPM_Sum_CH4,PPM_Sum_SMOKE :Integer:= 0;
+    PPM_Sum_CO,PPM_Sum_CH4,PPM_Sum_SMOKE :Float:= 0;
     PPM_Avg_CO,PPM_Avg_CH4,PPM_Avg_SMOKE :Float:= 0.0;
-    PPM_Tot : Integer;
     i : Integer := 1;
     Count_Time :Integer := 0;
     cURL,Time: Unbounded_String;
