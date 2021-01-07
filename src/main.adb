@@ -13,19 +13,19 @@ with mytime;
 
 procedure main is 
 
-    type PPM_Array is array(1..10000) of Integer;
-    PPM_Avg_CO_Array    : PPM_Array ;
-    PPM_Avg_CH4_Array   : PPM_Array ;
-    PPM_Avg_SMOKE_Array : PPM_Array ;
-    PPM_Mean_CO_Array   : PPM_Array ;
+    type PPM_Array is array(1..24) of Float;
+    PPM_Avg_CO_Array    : PPM_Array := (1..24 => 0.0);
+    PPM_Avg_CH4_Array   : PPM_Array := (1..24 => 0.0);
+    PPM_Avg_SMOKE_Array : PPM_Array := (1..24 => 0.0);
+    PPM_Mean_CO_Array   : PPM_Array := (1..24 => 0.0);
 
     Res : Slice_set;
     R0_air, SensorValue, dB, dC: Float;
     PPM_CO, PPM_CH4, PPM_SMOKE :Integer;
     PPM_Sum_CO,PPM_Sum_CH4,PPM_Sum_SMOKE :Integer:= 0;
-    PPM_Avg_CO,PPM_Avg_CH4,PPM_Avg_SMOKE :Integer:= 0;
+    PPM_Avg_CO,PPM_Avg_CH4,PPM_Avg_SMOKE :Float:= 0.0;
     PPM_Tot : Integer;
-    i : Integer := 0;
+    i : Integer := 1;
     Count_Time :Integer := 0;
     cURL,Time: Unbounded_String;
  
@@ -82,8 +82,8 @@ procedure main is
                         PPM_Mean_CO_Array(I):= PPM_Mean_CO_Array(I) + PPM_Avg_CO_Array(J);
                     end loop;
                 end loop;
-            Count_Time:= 0;
             end if;
+            Count_Time:= 0;
         end if;
     end loop;
 end main;
