@@ -41,9 +41,9 @@ procedure main is
         PPM_SMOKE:= Integer(mq2.getPPM_SMOKE(SensorValue, R0_air));
         Put_Line("PPM_SMOKE : " & Integer'Image(PPM_SMOKE));
 
-        PPM_Sum_CO := PPM_Sum_CO + PPM_CO;
-        PPM_Sum_CH4 := PPM_Sum_CH4 + PPM_CH4;
-        PPM_Sum_SMOKE := PPM_Sum_SMOKE + PPM_SMOKE;
+        PPM_Sum_CO := PPM_Sum_CO + Float(PPM_CO);
+        PPM_Sum_CH4 := PPM_Sum_CH4 + FLoat(PPM_CH4);
+        PPM_Sum_SMOKE := PPM_Sum_SMOKE + Float(PPM_SMOKE);
         
         ----- Sound Sensor -----
         SensorValue := sound.getSensorValue;
