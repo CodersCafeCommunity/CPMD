@@ -82,6 +82,11 @@ procedure main is
                         PPM_Mean_CO_Array(I):= PPM_Mean_CO_Array(I) + PPM_Avg_CO_Array(J);
                     end loop;
                 end loop;
+
+                for I in 1..17 loop
+                    Put_Line(Float'Image(PPM_Mean_CO_Array(I)));
+                end loop;
+
             end if;
             Count_Time:= 0;
         end if;
