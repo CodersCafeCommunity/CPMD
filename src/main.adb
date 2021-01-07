@@ -13,7 +13,7 @@ with mytime;
 
 procedure main is 
 
-    type PPM_Value is range 1 .. 10000;
+    type PPM_Value is Integer;
     type PPM_Array is array(Integer) of PPM_Value;
     PPM_Avg_CO_Array    : PPM_Array ;
     PPM_Avg_CH4_Array   : PPM_Array ;
