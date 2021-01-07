@@ -25,8 +25,8 @@ procedure main is
     PPM_Sum_CO,PPM_Sum_CH4,PPM_Sum_SMOKE :Integer:= 0;
     PPM_Avg_CO,PPM_Avg_CH4,PPM_Avg_SMOKE :Integer:= 0;
     PPM_Tot : Integer;
-    i,J : Integer;
-    Count_Time :Integer :=0;
+    i : Integer := 0;
+    Count_Time :Integer := 0;
     cURL,Time: Unbounded_String;
  
     begin
@@ -62,8 +62,6 @@ procedure main is
         ----- cURL-------
         cURL := googlesheet.buildcURL(To_String(Time),Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
         Res  := googlesheet.log(cURL);
-        
-        
         
         Delay 1.0;
         Count_Time:= Count_Time + 1;
