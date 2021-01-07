@@ -43,6 +43,7 @@ procedure main is
         Put_Line("PPM_CH4 : " & Integer'Image(PPM_CH4));
         PPM_SMOKE:= Integer(mq2.getPPM_SMOKE(SensorValue, R0_air));
         Put_Line("PPM_SMOKE : " & Integer'Image(PPM_SMOKE));
+
         PPM_Sum_CO := PPM_Sum_CO + PPM_CO;
         PPM_Sum_CH4 := PPM_Sum_CH4 + PPM_CH4;
         PPM_Sum_SMOKE := PPM_Sum_SMOKE + PPM_SMOKE;
@@ -65,11 +66,12 @@ procedure main is
         Res  := googlesheet.log(cURL);
         
         
+        
         Delay 1.0;
         Count_Time:= Count_Time + 1;
     
-        if Count_Time = 1 then
-            PPM_Avg_CO := PPM_Sum_CO / 3600;
+        if Count_Time = 60 then
+            PPM_Avg_CO := PPM_Sum_CO / 60;
             PPM_Avg_CO_Array(i) := PPM_Avg_CO;
         
             -- PPM_Avg_CH4 := PPM_Sum_CH4 /3600;
