@@ -66,7 +66,7 @@ procedure main is
         Count_Time:= Count_Time + 1;
     
         if Count_Time = 60 then
-            PPM_Avg_CO := PPM_Sum_CO / 60.0;
+            PPM_Avg_CO := PPM_Sum_CO/60.0;
             PPM_Avg_CO_Array(i) := PPM_Avg_CO;
         
             -- PPM_Avg_CH4 := PPM_Sum_CH4 /3600;
