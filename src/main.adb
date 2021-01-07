@@ -84,9 +84,7 @@ procedure main is
                 for I in 1..17 loop 
                     for J in I..I+7 loop 
                         PPM_Mean_CO_Array(I):= PPM_Mean_CO_Array(I) + PPM_Avg_CO_Array(J);
-                        J := J+1;
                     end loop;
-                    I := I+1;
                 end loop;
             Count_Time:= 0;
             end if;
