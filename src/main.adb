@@ -25,7 +25,7 @@ procedure main is
     PPM_Sum_CO,PPM_Sum_CH4,PPM_Sum_SMOKE :Integer:= 0;
     PPM_Avg_CO,PPM_Avg_CH4,PPM_Avg_SMOKE :Integer:= 0;
     PPM_Tot : Integer;
-    i,I,J : Integer;
+    i,J : Integer;
     Count_Time :Integer :=0;
     cURL,Time: Unbounded_String;
  
