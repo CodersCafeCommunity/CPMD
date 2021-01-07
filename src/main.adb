@@ -14,8 +14,7 @@ with mytime;
 procedure main is 
 
     type PPM_Value is range 1 .. 10000;
-    type Index is range 1 .. 24;
-    type PPM_Array is array(index) of PPM_Value;
+    type PPM_Array is array(Integer) of PPM_Value;
     PPM_Avg_CO_Array    : PPM_Array ;
     PPM_Avg_CH4_Array   : PPM_Array ;
     PPM_Avg_SMOKE_Array : PPM_Array ;
@@ -27,7 +26,7 @@ procedure main is
     PPM_Sum_CO,PPM_Sum_CH4,PPM_Sum_SMOKE :Integer:= 0;
     PPM_Avg_CO,PPM_Avg_CH4,PPM_Avg_SMOKE :Integer:= 0;
     PPM_Tot : Integer;
-    i,I,J : Index;
+    i,I,J : Integer;
     Count_Time :Integer :=0;
     cURL,Time: Unbounded_String;
  
