@@ -79,7 +79,7 @@ procedure main is
             PPM_Avg_SMOKE := PPM_Avg_SMOKE / 60.0;
             PPM_Avg_SMOKE_Array(i) := PPM_Avg_SMOKE;
 
-            if i = 24 then
+            if i = 2 then
                 -- Carbon Monoxide
                 for I in 1..17 loop 
                     for J in I..I+7 loop 
