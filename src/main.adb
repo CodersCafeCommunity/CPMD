@@ -90,9 +90,9 @@ procedure main is
                     end loop;
                 end loop;
                 for I in 1..17 loop
-	                  if PPM_Mean_CO_Array(1) < PPM_Mean_CO_Array(I+1) then
-                       PPM_Mean_CO_Array(1) := PPM_Mean_CO_Array(I+1);
-                    end if;
+	                    if PPM_Mean_CO_Array(1) < PPM_Mean_CO_Array(I+1) then
+                         PPM_Mean_CO_Array(1) := PPM_Mean_CO_Array(I+1);
+                         end if;
                     PPM_CO_Final := PPM_Mean_CO_Array(1);
                     Put_Line("Max CO Value :" & Float'Image(PPM_CO_Final));
                 end loop;
@@ -124,6 +124,7 @@ procedure main is
                     PPM_SMOKE_Final := PPM_Mean_SMOKE_Array(1);
                     Put_Line("Max SMOKE Value :" & Float'Image(PPM_SMOKE_Final));
                 end loop;
+
                 PPM_Final := (PPM_CH4_Final + PPM_SMOKE_Final + PPM_CO_Final)/3.0;
 
                 case Integer(PPM_Final) is
