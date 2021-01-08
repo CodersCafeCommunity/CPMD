@@ -126,7 +126,8 @@ procedure main is
                 case Integer(PPM_Final) is
                   when 0 .. 200 =>
                     Put_Line ("Excellent Air quality");
-                    Res:= cmd.execute("gpio -p write 14 high");
+                    Res:= cmd.execute("gpio -g write 14 high");
+                    Res:= cmd.execute("gpio -g write 14 high");
                   when 201 .. 400 =>
                     Put_Line ("Moderate Air quality"); 
                     Res := cmd.execute("gpio -p write 15 high");
@@ -140,6 +141,6 @@ procedure main is
             Count_Time:= 0;
           i := i + 1;
         end if;
-        Delay 8.0;
+        Delay 1.0;
     end loop;
 end main;
