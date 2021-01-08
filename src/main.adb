@@ -80,7 +80,7 @@ procedure main is
             PPM_Avg_SMOKE_Array(i) := PPM_Avg_SMOKE;
 
             if i = 2 then
-                Put_Line("In I")
+                Put_Line("In I");
                 -- Carbon Monoxide
                 for I in 1..17 loop 
                     for J in I..I+7 loop 
@@ -133,13 +133,13 @@ procedure main is
                   when others =>
                     Put_Line ("Severe Air quality"); 
                     Res := cmd.execute("gpio -p write 18 high");
-                    Res := cmd.execute("gpio -p write 18 high");
+                    --Res := cmd.execute("gpio -p write 18 high");
                 end case;
                 i := 0;
             end if;
             Count_Time:= 0;
           i := i + 1;
         end if;
-        Delay 20.0;
+        Delay 8.0;
     end loop;
 end main;
