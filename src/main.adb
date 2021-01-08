@@ -69,7 +69,7 @@ procedure main is
 
         Put_Line(Integer'Image(Count_Time));
     
-        if Count_Time = 3 then
+        if Count_Time = 4 then
             i := i + 1;
             Put_Line("In Count");
             PPM_Avg_CO := PPM_Sum_CO/3.0;
