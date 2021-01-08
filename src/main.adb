@@ -10,6 +10,7 @@ with sound;
 with lm35;
 with googlesheet;
 with mytime;
+with cmd;
 
 procedure main is 
 
