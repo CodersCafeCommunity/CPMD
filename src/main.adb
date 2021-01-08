@@ -68,14 +68,14 @@ procedure main is
         Delay 1.0;
         Count_Time:= Count_Time + 1;
     
-        if Count_Time = 3600 then
-            PPM_Avg_CO := PPM_Sum_CO/3600.0;
+        if Count_Time = 60 then
+            PPM_Avg_CO := PPM_Sum_CO/60.0;
             PPM_Avg_CO_Array(i) := PPM_Avg_CO;
             
-            PPM_Avg_CH4 := PPM_Sum_CH4 /3600.0;
+            PPM_Avg_CH4 := PPM_Sum_CH4 /60.0;
             PPM_Avg_CH4_Array(i) := PPM_Avg_CH4;
 
-            PPM_Avg_SMOKE := PPM_Avg_SMOKE / 3600.0;
+            PPM_Avg_SMOKE := PPM_Avg_SMOKE / 60.0;
             PPM_Avg_SMOKE_Array(i) := PPM_Avg_SMOKE;
 
             if i = 24 then
