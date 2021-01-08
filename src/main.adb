@@ -147,7 +147,7 @@ procedure main is
             Count_Time:= 0;
         end if;
 
-        Delay 7.0;
+        Delay 8.0;
 
     end loop;
 end main;
