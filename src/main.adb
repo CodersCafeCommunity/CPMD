@@ -121,11 +121,11 @@ procedure main is
                     Put_Line("Max SMOKE Value :" & Float'Image(PPM_SMOKE_Final));
                 end loop;
                 PPM_Final := (PPM_CH4_Final + PPM_SMOKE_Final + PPM_CO_Final)/3.0;
-                case PPM_Final is
-                  when 0.0 .. 200.0 =>
+                case Intger(PPM_Final) is
+                  when 0 .. 200 =>
                     Put_Line ("Excellent Air quality");
                     cmd.execute("gpio -p write 14 high");
-                  when 201.0 .. 400.0 =>
+                  when 201 .. 400 =>
                     Put_Line ("Moderate Air quality"); 
                     cmd.execute("gpio -p write 15 high");
                   when others =>
