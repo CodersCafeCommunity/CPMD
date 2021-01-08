@@ -125,14 +125,14 @@ procedure main is
                 case Integer(PPM_Final) is
                   when 0 .. 200 =>
                     Put_Line ("Excellent Air quality");
-                    cmd.execute("gpio -p write 14 high");
+                    Res:= cmd.execute("gpio -p write 14 high");
                   when 201 .. 400 =>
                     Put_Line ("Moderate Air quality"); 
-                    cmd.execute("gpio -p write 15 high");
+                    Res := cmd.execute("gpio -p write 15 high");
                   when others =>
                     Put_Line ("Severe Air quality"); 
-                    cmd.execute("gpio -p write 18 high");
-                    cmd.execute("gpio -p write 18 high");
+                    Res := cmd.execute("gpio -p write 18 high");
+                    Res := cmd.execute("gpio -p write 18 high");
                 end case;
                 i := 0;
             end if;
