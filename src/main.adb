@@ -66,10 +66,10 @@ procedure main is
         cURL := googlesheet.buildcURL(To_String(Time),Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
         Res  := googlesheet.log(cURL);
         
-        Delay 1.0;
         Count_Time:= Count_Time + 1;
     
         if Count_Time = 60 then
+            Put_Line("In Count");
             PPM_Avg_CO := PPM_Sum_CO/60.0;
             PPM_Avg_CO_Array(i) := PPM_Avg_CO;
             
@@ -80,6 +80,7 @@ procedure main is
             PPM_Avg_SMOKE_Array(i) := PPM_Avg_SMOKE;
 
             if i = 2 then
+                Put_Line("In I")
                 -- Carbon Monoxide
                 for I in 1..17 loop 
                     for J in I..I+7 loop 
@@ -139,5 +140,6 @@ procedure main is
             Count_Time:= 0;
           i := i + 1;
         end if;
+        Delay 20.0;
     end loop;
 end main;
