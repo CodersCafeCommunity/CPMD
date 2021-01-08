@@ -28,8 +28,7 @@ procedure main is
     PPM_Sum_CO,PPM_Sum_CH4,PPM_Sum_SMOKE :Float:= 0.0;
     PPM_Avg_CO,PPM_Avg_CH4,PPM_Avg_SMOKE :Float:= 0.0;
     PPM_CH4_Final,PPM_SMOKE_Final,PPM_CO_Final,PPM_Final : Float;
-    i : Integer := 1;
-    Count_Time :Integer := 0;
+    Count_Time,i :Integer := 0;
     cURL,Time: Unbounded_String;
  
     begin
@@ -66,9 +65,12 @@ procedure main is
         cURL := googlesheet.buildcURL(To_String(Time),Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
         Res  := googlesheet.log(cURL);
         
-        Count_Time:= Count_Time + 1;
+        Count_Time := Count_Time + 1;
+
+        Put_Line(Integer'Image(Count_Time));
     
         if Count_Time = 60 then
+            i := i + 1;
             Put_Line("In Count");
             PPM_Avg_CO := PPM_Sum_CO/60.0;
             PPM_Avg_CO_Array(i) := PPM_Avg_CO;
@@ -123,6 +125,7 @@ procedure main is
                     Put_Line("Max SMOKE Value :" & Float'Image(PPM_SMOKE_Final));
                 end loop;
                 PPM_Final := (PPM_CH4_Final + PPM_SMOKE_Final + PPM_CO_Final)/3.0;
+
                 case Integer(PPM_Final) is
                   when 0 .. 200 =>
                     Put_Line ("Excellent Air quality");
@@ -139,8 +142,9 @@ procedure main is
                 i := 0;
             end if;
             Count_Time:= 0;
-          i := i + 1;
         end if;
+
         Delay 1.0;
+
     end loop;
 end main;
