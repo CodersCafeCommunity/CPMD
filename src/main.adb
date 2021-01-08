@@ -133,6 +133,7 @@ procedure main is
                     cmd.execute("gpio -p write 18 high");
                     cmd.execute("gpio -p write 18 high");
                     exit;
+                end case';
                 i := 0;
             end if;
             Count_Time:= 0;
