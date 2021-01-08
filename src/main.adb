@@ -69,19 +69,19 @@ procedure main is
 
         Put_Line(Integer'Image(Count_Time));
     
-        if Count_Time = 60 then
+        if Count_Time = 3 then
             i := i + 1;
             Put_Line("In Count");
-            PPM_Avg_CO := PPM_Sum_CO/60.0;
+            PPM_Avg_CO := PPM_Sum_CO/3.0;
             PPM_Avg_CO_Array(i) := PPM_Avg_CO;
             
-            PPM_Avg_CH4 := PPM_Sum_CH4 /60.0;
+            PPM_Avg_CH4 := PPM_Sum_CH4 /3.0;
             PPM_Avg_CH4_Array(i) := PPM_Avg_CH4;
 
-            PPM_Avg_SMOKE := PPM_Avg_SMOKE / 60.0;
+            PPM_Avg_SMOKE := PPM_Avg_SMOKE / 3.0;
             PPM_Avg_SMOKE_Array(i) := PPM_Avg_SMOKE;
 
-            if i = 2 then
+            if i = 3 then
                 Put_Line("In I");
                 -- Carbon Monoxide
                 for I in 1..17 loop 
@@ -131,20 +131,23 @@ procedure main is
                     Put_Line ("Excellent Air quality");
                     Res:= cmd.execute("gpio -g write 14 high");
                     Res:= cmd.execute("gpio -g write 14 high");
+                    exit;
                   when 201 .. 400 =>
                     Put_Line ("Moderate Air quality"); 
                     Res := cmd.execute("gpio -p write 15 high");
+                    exit;
                   when others =>
                     Put_Line ("Severe Air quality"); 
                     Res := cmd.execute("gpio -p write 18 high");
                     --Res := cmd.execute("gpio -p write 18 high");
+                    exit;
                 end case;
                 i := 0;
             end if;
             Count_Time:= 0;
         end if;
 
-        Delay 1.0;
+        Delay 7.0;
 
     end loop;
 end main;
