@@ -134,14 +134,12 @@ procedure main is
                     Res := cmd.execute("gpio -g write 14 high");
                     Res := cmd.execute("gpio -g write 15 low");
                     Res := cmd.execute("gpio -g write 18 low");
-                    exit;
                   when 201 .. 400 =>
                     Put_Line ("Moderate Air quality"); 
                     Res := cmd.execute("gpio -g mode 15 out");--Blue
                     Res := cmd.execute("gpio -g write 15 high");
                     Res := cmd.execute("gpio -g write 14 low");
                     Res := cmd.execute("gpio -g write 18 low"); 
-                    exit;
                   when others =>
                     Put_Line ("Severe Air quality"); -- Red
                     Res := cmd.execute("gpio -g mode 18 out");
@@ -154,7 +152,6 @@ procedure main is
                         Delay 1.0;
                         Res := cmd.execute("gpio -g write 23 low");
                     end loop;
-                    exit;
                 end case;
                 i := 0;
             end if;
