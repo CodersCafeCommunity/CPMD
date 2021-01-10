@@ -32,6 +32,11 @@ procedure main is
     cURL,Time: Unbounded_String;
  
     begin
+    Res := cmd.execute("gpio -g mode 14 out");-- Green
+    Res := cmd.execute("gpio -g mode 15 out");--Blue
+    Res := cmd.execute("gpio -g mode 18 out");--Red
+    Res := cmd.execute("gpio -g mode 23 out");--Buzzer
+
     -- loop forever
     loop 
         ----- Gas Sensor ------
@@ -130,27 +135,27 @@ procedure main is
                 case Integer(PPM_Final) is
                   when 0 .. 200 =>
                     Put_Line ("Excellent Air quality");
-                    Res := cmd.execute("gpio -g mode 14 out");-- Green
-                    Res := cmd.execute("gpio -g write 14 high");
                     Res := cmd.execute("gpio -g write 15 low");
                     Res := cmd.execute("gpio -g write 18 low");
+                    Res := cmd.execute("gpio -g write 14 high");
+                    
                   when 201 .. 400 =>
                     Put_Line ("Moderate Air quality"); 
-                    Res := cmd.execute("gpio -g mode 15 out");--Blue
-                    Res := cmd.execute("gpio -g write 15 high");
                     Res := cmd.execute("gpio -g write 14 low");
                     Res := cmd.execute("gpio -g write 18 low"); 
+                    Res := cmd.execute("gpio -g write 15 high");
+                    
                   when others =>
-                    Put_Line ("Severe Air quality"); -- Red
-                    Res := cmd.execute("gpio -g mode 18 out");
-                    Res := cmd.execute("gpio -g write 18 high"); 
+                    Put_Line ("Severe Air quality");
                     Res := cmd.execute("gpio -g write 14 low");
                     Res := cmd.execute("gpio -g write 15 low");
+                    Res := cmd.execute("gpio -g write 18 high"); 
+                    
                     for I in 1..5 loop
-                        Res := cmd.execute("gpio -g mode 23 out");--Buzzer
                         Res := cmd.execute("gpio -g write 23 high"); 
                         Delay 1.0;
                         Res := cmd.execute("gpio -g write 23 low");
+                        Delay 1.0;
                     end loop;
                 end case;
                 i := 0;
