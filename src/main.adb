@@ -135,26 +135,26 @@ procedure main is
                 case Integer(PPM_Final) is
                   when 0 .. 200 =>
                     Put_Line ("Excellent Air quality");
-                    Res := cmd.execute("gpio -g write 15 low");
-                    Res := cmd.execute("gpio -g write 18 low");
-                    Res := cmd.execute("gpio -g write 14 high");
+                    Res := cmd.execute("gpio -g write 15 0");
+                    Res := cmd.execute("gpio -g write 18 0");
+                    Res := cmd.execute("gpio -g write 14 1");
                     
                   when 201 .. 400 =>
                     Put_Line ("Moderate Air quality"); 
-                    Res := cmd.execute("gpio -g write 14 low");
-                    Res := cmd.execute("gpio -g write 18 low"); 
-                    Res := cmd.execute("gpio -g write 15 high");
+                    Res := cmd.execute("gpio -g write 14 0");
+                    Res := cmd.execute("gpio -g write 18 0"); 
+                    Res := cmd.execute("gpio -g write 15 1");
                     
                   when others =>
                     Put_Line ("Severe Air quality");
-                    Res := cmd.execute("gpio -g write 14 low");
-                    Res := cmd.execute("gpio -g write 15 low");
-                    Res := cmd.execute("gpio -g write 18 high"); 
+                    Res := cmd.execute("gpio -g write 14 0");
+                    Res := cmd.execute("gpio -g write 15 0");
+                    Res := cmd.execute("gpio -g write 18 1"); 
                     
                     for I in 1..5 loop
-                        Res := cmd.execute("gpio -g write 23 high"); 
+                        Res := cmd.execute("gpio -g write 23 1"); 
                         Delay 1.0;
-                        Res := cmd.execute("gpio -g write 23 low");
+                        Res := cmd.execute("gpio -g write 23 0");
                         Delay 1.0;
                     end loop;
                 end case;
