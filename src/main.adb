@@ -3,7 +3,7 @@ with Ada.Text_IO;use Ada.Text_IO;
 with Ada.Integer_Text_IO;use Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded;use Ada.Strings.Unbounded;
 with Ada.Text_IO.Unbounded_IO;use Ada.Text_IO.Unbounded_IO;
-with GNAT.String_Split;      use GNAT.String_Split;
+with GNAT.String_Split;use GNAT.String_Split;
 
 with mq2;
 with sound;
