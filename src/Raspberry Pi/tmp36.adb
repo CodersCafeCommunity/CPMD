@@ -5,7 +5,7 @@ with GNAT.String_Split;use GNAT.String_Split;
 with cmd; use cmd;
 with convert; use convert;
 
-package body lm35 is
+package body tmp36 is
     function getSensorValue return Float is 
         Result : Slice_set;
         Value : Float;
@@ -29,9 +29,9 @@ package body lm35 is
         dC, SensorVolt  : Float;
         begin
             SensorVolt := getSensorVolt(SensorValue);
-            dc := (SensorVolt - 0.5)*100.0;
+            dc := (SensorVolt-0.5) * 100.0;
             return dC;
         end getdC;
 
-end lm35;
+end tmp36;
 

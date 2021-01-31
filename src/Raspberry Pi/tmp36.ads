@@ -6,7 +6,7 @@ with cmd; use cmd;
 with convert; use convert;
 
 
-package lm35 is
+package tmp36 is
     function getSensorValue return Float;
     function getSensorVolt(SensorValue : Float) return Float;
     function getdC (SensorValue : Float) return Float;

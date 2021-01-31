@@ -7,7 +7,7 @@ with GNAT.String_Split;use GNAT.String_Split;
 
 with mq2;
 with sound;
-with lm35;
+with tmp36;
 with googlesheet;
 with mytime;
 with cmd;
@@ -15,27 +15,27 @@ with cmd;
 procedure main is 
 
     type PPM_Array is array(1..24) of Float;
-    PPM_Avg_CO_Array     : PPM_Array := (1..24 => 0.0);
-    PPM_Avg_CH4_Array    : PPM_Array := (1..24 => 0.0);
-    PPM_Avg_SMOKE_Array  : PPM_Array := (1..24 => 0.0);
-    PPM_Mean_CO_Array    : PPM_Array := (1..24 => 0.0);
-    PPM_Mean_CH4_Array   : PPM_Array := (1..24 => 0.0);
-    PPM_Mean_SMOKE_Array : PPM_Array := (1..24 => 0.0);
+    PPM_Avg_CO_Array    : PPM_Array := (1..24 => 0.0);
+    PPM_Avg_CH4_Array   : PPM_Array := (1..24 => 0.0);
+    PPM_Avg_SMOKE_Array : PPM_Array := (1..24 => 0.0);
+    PPM_Mean_CO_Array   : PPM_Array := (1..24 => 0.0);
+    PPM_Mean_CH4_Array  : PPM_Array := (1..24 => 0.0);
+    PPM_Mean_SMOKE_Array  : PPM_Array := (1..24 => 0.0);
 
     Res : Slice_set;
     R0_air, SensorValue, dB, dC: Float;
-    PPM_CO, PPM_CH4, PPM_SMOKE : Integer;
-    PPM_Sum_CO,PPM_Sum_CH4,PPM_Sum_SMOKE : Float:= 0.0;
-    PPM_Avg_CO,PPM_Avg_CH4,PPM_Avg_SMOKE : Float:= 0.0;
+    PPM_CO, PPM_CH4, PPM_SMOKE :Integer;
+    PPM_Sum_CO,PPM_Sum_CH4,PPM_Sum_SMOKE :Float:= 0.0;
+    PPM_Avg_CO,PPM_Avg_CH4,PPM_Avg_SMOKE :Float:= 0.0;
     PPM_CH4_Final,PPM_SMOKE_Final,PPM_CO_Final,PPM_Final : Float;
-    Count_Time,i : Integer := 0;
+    Count_Time,i :Integer := 0;
     cURL,Time: Unbounded_String;
  
     begin
-    Res := cmd.execute("gpio -g mode 14 out"); -- Green
-    Res := cmd.execute("gpio -g mode 15 out"); --Blue
-    Res := cmd.execute("gpio -g mode 2 out");  --Red
-    Res := cmd.execute("gpio -g mode 23 out"); --Buzzer
+    Res := cmd.execute("gpio -g mode 14 out");-- Green
+    Res := cmd.execute("gpio -g mode 15 out");--Blue
+    Res := cmd.execute("gpio -g mode 2 out");--Red
+    Res := cmd.execute("gpio -g mode 23 out");--Buzzer
 
     -- loop forever
     loop 
@@ -57,38 +57,41 @@ procedure main is
         ----- Sound Sensor -----
         SensorValue := sound.getSensorValue;
         dB := sound.getdB(SensorValue);
-      
+       -- Put_Line("Intensity in dB :" & Float'Image(dB));
 
         ----- Temperature Sensor -----
-        SensorValue := lm35.getSensorValue;
-        dC := lm35.getdC(SensorValue);
-        
+        SensorValue := tmp36.getSensorValue;
+        dC := tmp36.getdC(SensorValue);
+        --Put_Line("Temp in *C :" & Float'Image(dC));
 
         ------ Time ------
         Time := To_Unbounded_String(mytime.getTime);
 
-        ------ cURL ------
+        ----- cURL-------
         cURL := googlesheet.buildcURL(To_String(Time),Integer(dC),Integer(dB),PPM_CO,PPM_CH4,PPM_SMOKE);
         Res  := googlesheet.log(cURL);
         
         Count_Time := Count_Time + 1;
+
+        Put_Line(Integer'Image(Count_Time));
     
-        if Count_Time = 180 then
+        if Count_Time = 327 then
             i := i + 1;
             Put_Line("In Count");
-            PPM_Avg_CO := PPM_Sum_CO/3.0;
+            PPM_Avg_CO := PPM_Sum_CO/327.0;
             PPM_Avg_CO_Array(i) := PPM_Avg_CO;
             PPM_Sum_CO := 0.0;
    
-            PPM_Avg_CH4 := PPM_Sum_CH4 /3.0;
+            PPM_Avg_CH4 := PPM_Sum_CH4 /327.0;
             PPM_Avg_CH4_Array(i) := PPM_Avg_CH4;
             PPM_Sum_CH4  := 0.0;
 
-            PPM_Avg_SMOKE := PPM_Sum_SMOKE / 3.0;
+            PPM_Avg_SMOKE := PPM_Sum_SMOKE / 327.0;
             PPM_Avg_SMOKE_Array(i) := PPM_Avg_SMOKE;
             PPM_Sum_SMOKE := 0.0;
 
             if i = 24 then
+                Put_Line("In I");
                 -- Carbon Monoxide
                 for I in 1..17 loop 
                     for J in I..I+7 loop 
@@ -142,7 +145,6 @@ procedure main is
                 end loop;
                 PPM_Final := (PPM_CH4_Final + PPM_SMOKE_Final + PPM_CO_Final)/3.0;
 
-
                 case Integer(PPM_Final) is
                   when 0 .. 200 =>
                     Put_Line ("Excellent Air quality");
@@ -169,9 +171,13 @@ procedure main is
                         Delay 1.0;
                     end loop;
                 PPM_CH4_Final := 0.0;
+                Put_Line (Float'Image(PPM_CH4_Final));
                 PPM_SMOKE_Final := 0.0;
+                Put_Line (Float'Image(PPM_SMOKE_Final));
                 PPM_CO_Final := 0.0;
+                Put_Line (Float'Image(PPM_CO_Final));
                 PPM_Final := 0.0;
+                Put_Line (Float'Image(PPM_Final));
                 end case;
                 i := 0;
             end if;
