@@ -16,10 +16,10 @@ project GCM is
       case Module is
 
          when "MOD_WIN" =>
-            for Executable ("main.adb") use "gcm_win";
+            for Executable ("main.adb") use "cpmd_win";
 
          when "MOD_RPI" =>
-            for Executable ("main.adb") use "gcm";
+            for Executable ("main.adb") use "cpmd";
       end case;
    end Builder;
 
