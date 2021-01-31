@@ -72,26 +72,22 @@ procedure main is
         Res  := googlesheet.log(cURL);
         
         Count_Time := Count_Time + 1;
-
-        Put_Line(Integer'Image(Count_Time));
     
-        if Count_Time = 327 then
+        if Count_Time = 180 then
             i := i + 1;
-            Put_Line("In Count");
-            PPM_Avg_CO := PPM_Sum_CO/327.0;
+            PPM_Avg_CO := PPM_Sum_CO/180.0;
             PPM_Avg_CO_Array(i) := PPM_Avg_CO;
             PPM_Sum_CO := 0.0;
    
-            PPM_Avg_CH4 := PPM_Sum_CH4 /327.0;
+            PPM_Avg_CH4 := PPM_Sum_CH4 /180.0;
             PPM_Avg_CH4_Array(i) := PPM_Avg_CH4;
             PPM_Sum_CH4  := 0.0;
 
-            PPM_Avg_SMOKE := PPM_Sum_SMOKE / 327.0;
+            PPM_Avg_SMOKE := PPM_Sum_SMOKE /180.0;
             PPM_Avg_SMOKE_Array(i) := PPM_Avg_SMOKE;
             PPM_Sum_SMOKE := 0.0;
 
             if i = 24 then
-                Put_Line("In I");
                 -- Carbon Monoxide
                 for I in 1..17 loop 
                     for J in I..I+7 loop 
