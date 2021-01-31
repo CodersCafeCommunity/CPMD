@@ -40,7 +40,7 @@ procedure main is
     -- loop forever
     loop 
         ----- Gas Sensor ------
-        R0_air := 1.22436;
+        R0_air := 1.22436; -- Or use mq2.calibrateMQ2 function to get the value of R0_air
         SensorValue := mq2.getSensorValue;
         PPM_CO   := Integer(mq2.getPPM_CO(SensorValue, R0_air));
         Put_Line("PPM_CO : " & Integer'Image(PPM_CO)); 
